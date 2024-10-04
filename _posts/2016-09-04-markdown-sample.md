@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Markdown sample"
-date:   2016-09-04
+title:  "AI Agents "
+date:   2024-10-02
 ---
 
-### Markdown test document
+### The fumbling sheperds of tomorrow 
 
 Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://github.com) should be have dotted underlines and solid underlines on hover.
 
