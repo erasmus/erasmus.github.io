@@ -13,8 +13,8 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Montanus
-description: Notes on humans, technology, and trust
+title: Erasmus
+description: "Notes on trust, technology, and transcendence"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_repo: erasmus.github.io # the GitHub repo name for your project
@@ -27,7 +27,7 @@ social_username: specksnydern
 
 # Set theme color here
 # Choose from: black (default), blue, gray, magenta, orange, red, white, and yellow.
-theme_color: black
+theme_color: white
 
 # Build settings
 markdown: kramdown
