@@ -1,1 +1,16 @@
-// Placeholder to allow overriding predefined variables smoothly.
+// Colours
+$background-color: rgb(240, 238, 230);
+$color: rgb(31, 30, 29);
+$link-base-color: $color;
+$link-visited-color: $color;
+$link-hover-color: rgb(55, 54, 54);
+
+// Typeface
+$base-font-family: "Newsreader 24 Pt", "Times New Roman", serif;
+$sans-serif-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif !default;
+
+// Width of the content area
+$content-width:    620px;
+$on-palm:          600px;
+$on-laptop:        620px;
+

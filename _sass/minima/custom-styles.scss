@@ -1,2 +1,40 @@
 // Placeholder to allow defining custom styles that override everything else.
 // (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+
+body {
+    background-color: (31, 30, 29);
+}
+
+
+.site-header a {
+    text-transform: uppercase;
+    font-family: $sans-serif-font-family;
+    font-weight: 600;
+}
+
+// Post page adjustments
+
+.post-header {
+    text-align: left;
+    h1 {
+        font-weight: 600;
+      }
+}
+
+.post-meta {
+    text-transform: uppercase;
+    font-family: $sans-serif-font-family;
+    font-weight: 600;
+    font-size: 10px;
+}
+
+.post-content {
+
+    a {
+        text-underline-offset: .1em;
+        text-decoration: underline;
+        text-decoration-thickness: .08em;
+    }
+
+}
+
