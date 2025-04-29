@@ -5,6 +5,12 @@ body {
     background-color: (31, 30, 29);
 }
 
+h1, h2, h3, h4, h5, h6 {
+   font-family: $headline-font-family;
+   font-weight: 600;
+  }
+
+
 
 .site-header a {
     text-transform: uppercase;
@@ -17,6 +23,7 @@ body {
 .post-header {
     text-align: left;
     h1 {
+        font-family: $headline-font-family;
         font-weight: 600;
       }
 }
@@ -29,6 +36,9 @@ body {
 }
 
 .post-content {
+    p {
+        letter-spacing: .02em;
+    }
 
     a {
         text-underline-offset: .1em;
