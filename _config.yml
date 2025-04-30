@@ -1,6 +1,4 @@
 title: Erasmus
-author:
-  name: Erasmus
 
 description: >
   Notes on trust, technology, and transcendence
@@ -54,3 +52,10 @@ minima:
     - title: LinkedIn
       icon: linkedin
       url: "https://www.linkedin.com/in/erasmushagen/"
+    - title: Bluesky
+      icon: bluesky
+      url: "https://bsky.app/profile/erasmush.bsky.social"
+    - title: Nostr
+      icon: wave-square
+      url: "https://primal.net/p/nprofile1qqszefgujmusguvull62c7923ggcy8rsqj78qr3yqqhj7ssu7fdpphcqp7v60"
+      
