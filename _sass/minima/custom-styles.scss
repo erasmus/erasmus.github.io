@@ -5,6 +5,16 @@ body {
     background-color: (31, 30, 29);
 }
 
+.site-header {
+    border-bottom: none;
+}
+
+.site-footer {
+    font-family: $sans-serif-font-family;
+    font-size: $small-font-size;
+    font-weight: 400;
+}
+
 h1, h2, h3, h4, h5, h6 {
    font-family: $headline-font-family;
    font-weight: 600;
@@ -16,6 +26,10 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     font-family: $sans-serif-font-family;
     font-weight: 600;
+    &.nav-item {
+        font-size: $small-font-size;
+        font-weight: 400;  
+    }
 }
 
 // Post page adjustments
@@ -38,6 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 .post-content {
     p {
         letter-spacing: .02em;
+        font-family: warnock-pro, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
     }
 
     a {
@@ -45,6 +60,6 @@ h1, h2, h3, h4, h5, h6 {
         text-decoration: underline;
         text-decoration-thickness: .08em;
     }
-
 }
+
 
