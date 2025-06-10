@@ -9,6 +9,8 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+permalink: /:year/:title/
+
 sass:
   quiet_deps: true
   silence_deprecations: [import]

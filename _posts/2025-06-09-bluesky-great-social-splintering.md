@@ -58,7 +58,7 @@ Now comes network D, a new AI social media startup. Starting a new venture is al
 
 ![D joins](/assets/img/AB-CD.png "D joins")
 
-Their network is basically a Fentanyl casino. At first, C finds mutual benefit in federation, when the competitive pressure is perceived to be too intense, they defederate. Well, the C users can move their social graph to the new network, so they do. C relaxes their moderation policies even further and stays connected. Together, CD now race at breakneck speed towards the bottom of the brain stem. AB stays happy and ignorant. Tim Harris makes another documentary. Sociologists, media theorists look on in horror.
+Their network is basically a Fentanyl casino. At first, C finds mutual benefit in federation, when the competitive pressure is perceived to be too intense, they defederate. Well, the C users can move their social graph to the new network, so they do. C relaxes their moderation policies even further and stays connected. Together, CD now race at breakneck speed towards the bottom of the brain stem. AB stays happy and ignorant. Tristan Harris makes another documentary. Sociologists, media theorists look on in horror.
 
 ![CD race](/assets/img/AB-CCDD.png "CD race")
 
