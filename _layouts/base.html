@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
+  <link rel="stylesheet" href="{{ "/assets/css/sidebar.css" | relative_url }}">
   {%- include head.html -%}
 
   <body>
@@ -17,6 +18,8 @@
 
     {%- include sub-footer.html -%}
 
+  {%- include sidebar.html -%}
+    <script src="{{ "/assets/js/sidebar.js" | relative_url }}"></script>
   </body>
 
 </html>
