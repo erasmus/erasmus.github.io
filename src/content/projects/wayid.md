@@ -6,7 +6,7 @@ years: "2026 – present"
 domain: "Digital identity"
 summary: "Provenance certificates for AI agents — WayID binds each agent's cryptographic identity to a verified human that anyone can check in one lookup."
 tile: image
-image: ../../assets/placeholder-wide.png
+image: ../../assets/img/wayid.jpg
 span: md
 featured: true
 order: 2
@@ -29,10 +29,10 @@ links:
   Live at <a href="https://way.je">way.je</a>.</p>
 </div>
 
-<figure class="bleed">
-  <div class="media-placeholder" style="aspect-ratio: 21 / 9">
-    <span>Full-width hero graphic</span>
-  </div>
+<figure class="bleed-wide">
+
+![A video call where the caller's AI agent shows a WayID QR code, next to a phone verifying the agent session as authorised](../../assets/img/wayid.jpg)
+
 </figure>
 
 ## The brief
