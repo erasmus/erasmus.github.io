@@ -13,7 +13,7 @@
 
 * { box-sizing: border-box; margin: 0; }
 
-html { background: var(--paper); color: var(--ink); }
+html { background: var(--paper); color: var(--ink); overflow-x: clip; }
 
 body {
   font: 400 18px/1.6 var(--font-serif);
@@ -61,6 +61,10 @@ code, pre { font-family: var(--font-mono); font-size: 0.85em; }
   color: var(--ink-muted);
 }
 
+/* "All projects →" style links out of a home-page summary section. */
+.more-link { font-family: var(--font-sans); font-size: 13px; text-decoration: none; }
+.more-link:hover { text-decoration: underline; }
+
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -70,6 +74,61 @@ code, pre { font-family: var(--font-mono); font-size: 0.85em; }
   font-family: var(--font-sans);
 }
 .skip-link:focus { left: 8px; top: 8px; z-index: 10; }
+
+/* ---- Case-study blocks (project pages) ---------------------------------- */
+
+/* Standout summary card: inverted ink-on-paper, slightly wider than the prose column. */
+.tldr {
+  background: var(--ink);
+  color: var(--paper);
+  width: min(760px, 100vw - 40px);
+  margin-inline: calc(50% - min(380px, 50vw - 20px));
+  margin-block: 2.5em;
+  padding: 28px 32px;
+}
+.tldr .label { color: rgba(240, 238, 230, 0.6); margin-bottom: 0.6em; }
+.tldr a { color: var(--paper); }
+.tldr a:hover { color: rgba(240, 238, 230, 0.8); }
+
+/* Breakouts from the prose column. */
+.bleed { width: 100vw; margin-inline: calc(50% - 50vw); }
+.bleed-wide {
+  width: min(1080px, 100vw - 40px);
+  margin-inline: calc(50% - min(540px, 50vw - 20px));
+}
+.prose .bleed, .prose .bleed-wide { margin-block: 2.5em; }
+
+/* Hatched stand-in for graphics/video until real media lands. */
+.media-placeholder {
+  display: grid;
+  place-items: center;
+  background: repeating-linear-gradient(45deg, var(--tile), var(--tile) 14px, transparent 14px, transparent 28px);
+  border-block: 1px dashed var(--rule);
+  color: var(--ink-muted);
+}
+.bleed-wide .media-placeholder, .prose-width .media-placeholder { border: 1px dashed var(--rule); }
+.media-placeholder span {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--paper);
+  padding: 6px 12px;
+}
+
+/* Responsive 16:9 video slot — swap the placeholder div for an iframe. */
+.video-slot { position: relative; aspect-ratio: 16 / 9; }
+.video-slot iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+.prose figcaption {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--ink-muted);
+  text-align: center;
+  margin-top: 10px;
+  padding-inline: 20px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0ms !important; }

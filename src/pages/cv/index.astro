@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import CvSection from '../../components/CvSection.astro';
+import CreditsSection from '../../components/CreditsSection.astro';
+import { SITE } from '../../data/site';
+---
+<Base title={`CV — ${SITE.name}`} description={`Full curriculum vitae of ${SITE.name}: experience, education, and languages.`}>
+  <CvSection full />
+  <CreditsSection />
+</Base>
+<style>
+  :global(#cv) { margin-block: 24px 64px; width: 100%; }
+  :global(#credits) { margin-block: 64px; width: 100%; }
+</style>

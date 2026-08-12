@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { SITE } from '../../data/site';
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title={`Projects — ${SITE.name}`} description="Selected product and technology work in finance and digital identity.">
+  <div class="prose-width">
+    <h1>Projects</h1>
+    <ul>
+      {projects.map((p) => (
+        <li>
+          <p class="label">{p.data.domain} · {p.data.years}</p>
+          <h2><a href={`/projects/${p.id}/`}>{p.data.title}</a></h2>
+          <p class="role">{p.data.role}, {p.data.org}</p>
+          <p class="desc">{p.data.summary}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>
+<style>
+  h1 { font-size: 2.2rem; margin-block: 24px 8px; }
+  ul { list-style: none; padding: 0; }
+  li { padding-block: 1.4em; border-bottom: 1px solid var(--rule); }
+  li h2 { font-size: 1.4rem; margin-top: 2px; }
+  li h2 a { text-decoration: none; }
+  li h2 a:hover { text-decoration: underline; }
+  .role { font-family: var(--font-sans); font-size: 14px; color: var(--ink-muted); margin-top: 4px; }
+  .desc { color: var(--ink-muted); font-size: 0.95rem; margin-top: 4px; }
+</style>

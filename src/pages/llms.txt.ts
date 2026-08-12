@@ -51,10 +51,6 @@ export async function GET(context: APIContext) {
 
   lines.push(
     '',
-    `### Skills`,
-    '',
-    CV.skills.join(' · '),
-    '',
     '### Languages',
     '',
     CV.languages.join(' · '),

@@ -2,8 +2,6 @@
 import Base from '../layouts/Base.astro';
 import BentoGrid from '../components/BentoGrid.astro';
 import CvSection from '../components/CvSection.astro';
-import CreditsSection from '../components/CreditsSection.astro';
-import ContactSection from '../components/ContactSection.astro';
 import { SITE } from '../data/site';
 import { getCollection } from 'astro:content';
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
@@ -20,10 +18,10 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
   <section id="projects" class="projects" aria-labelledby="projects-heading">
     <h2 id="projects-heading" class="label wide-width">Selected work</h2>
     <BentoGrid />
+    <p class="more wide-width"><a class="more-link" href="/projects/">All projects →</a></p>
   </section>
 
   <CvSection />
-  <CreditsSection />
 
   <section id="writing" class="prose-width" aria-labelledby="writing-heading">
     <h2 id="writing-heading">Writing</h2>
@@ -35,10 +33,8 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
         </li>
       ))}
     </ul>
-    <p><a class="all-posts" href="/writing/">All writing →</a></p>
+    <p class="more"><a class="more-link" href="/writing/">All writing →</a></p>
   </section>
-
-  <ContactSection />
 </Base>
 <style>
   .hero { margin-block: 48px 56px; text-align: center; }
@@ -46,8 +42,8 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .hero .lede { max-width: 34em; margin: 12px auto 8px; }
   .projects { margin-block: 32px 64px; }
   .projects h2 { display: block; margin-bottom: 12px; }
-  :global(#cv), :global(#credits), :global(#writing), :global(#contact) { margin-block: 64px; width: 100%; }
+  :global(#cv), :global(#writing) { margin-block: 64px; width: 100%; }
   .post-list { list-style: none; padding: 0; margin-top: 1em; }
   .post-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-block: 0.5em; border-bottom: 1px solid var(--rule); }
-  .all-posts { font-family: var(--font-sans); font-size: 13px; text-decoration: none; }
+  .more { margin-top: 1.5em; }
 </style>

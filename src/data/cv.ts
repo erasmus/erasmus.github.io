@@ -1,14 +1,15 @@
 export interface Position { title: string; dates: string; note?: string }
-export interface Org { org: string; positions: Position[] }
-export interface Edu { institution: string; qualification: string; years: string }
+// `icon` is a filename in src/assets/icons; omit it to fall back to an initial monogram.
+export interface Org { org: string; positions: Position[]; icon?: string }
+export interface Edu { institution: string; qualification: string; years: string; icon?: string }
 
-export interface Cv { experience: Org[]; education: Edu[]; skills: string[]; languages: string[] }
+export interface Cv { experience: Org[]; education: Edu[]; languages: string[] }
 
 export const CV: Cv = {
   experience: [
     { org: 'Lineage Labs', positions: [{ title: 'Co-Founder', dates: 'Feb 2026 – present', note: 'Building trust rails for AI agents.' }] },
-    { org: 'Concordium', positions: [{ title: 'Director of Product', dates: 'Dec 2023 – Feb 2026' }] },
-    { org: 'Pendulum', positions: [{ title: 'Head of Product', dates: 'Nov 2021 – Jun 2023', note: 'Headed product development of a forex-focused Polkadot parachain from idea to launch, including Spacewalk, the first bridge between Stellar and Polkadot.' }] },
+    { org: 'Concordium', icon: 'Concordium Symbol_Black.svg', positions: [{ title: 'Director of Product', dates: 'Dec 2023 – Feb 2026' }] },
+    { org: 'Pendulum', icon: 'Pendulum_logo.svg', positions: [{ title: 'Head of Product', dates: 'Nov 2021 – Jun 2023', note: 'Headed product development of a forex-focused Polkadot parachain from idea to launch, including Spacewalk, the first bridge between Stellar and Polkadot.' }] },
     { org: 'SatoshiPay', positions: [
       { title: 'Head of Product', dates: 'Nov 2021 – Jun 2023', note: 'Led product development of a cross-border money transfer app on decentralised ledger technology, including compliance (KYC/AML) and financial-services partnerships.' },
       { title: 'Product Lead', dates: 'Jun 2017 – Nov 2021', note: 'Led development of a 1-click payment mechanism, first on Bitcoin then Stellar, and product management of Solar Wallet for desktop, Android, and iOS.' },
@@ -23,11 +24,10 @@ export const CV: Cv = {
     { org: 'Lexington Business Angels', positions: [{ title: 'Analyst', dates: 'Sep 2012 – May 2013', note: 'Investment analyst for seed investors and consultant to early-stage digital media and technology start-ups in London.' }] },
   ],
   education: [
-    { institution: 'University of Oxford', qualification: 'MSc, Social Science of the Internet', years: '2011–2012' },
-    { institution: 'Goldsmiths College, University of London', qualification: 'BA, Media & Communications', years: '2008–2011' },
-    { institution: 'London School of Economics', qualification: 'Diploma, Managerial Accounting and Financial Control', years: '2010' },
+    { institution: 'University of Oxford', icon: 'University_of_Oxford.svg', qualification: 'MSc, Social Science of the Internet', years: '2011–2012' },
+    { institution: 'Goldsmiths College, University of London', icon: 'Goldsmith_University-logo.svg', qualification: 'BA, Media & Communications', years: '2008–2011' },
+    { institution: 'London School of Economics', icon: 'LSE_Logo.svg', qualification: 'Diploma, Managerial Accounting and Financial Control', years: '2010' },
     { institution: 'Birkbeck, University of London', qualification: 'Diploma, Media Studies / Journalism', years: '2006–2007' },
   ],
-  skills: ['Product Development', 'Digital Strategy', 'Business Transformation'],
   languages: ['Danish (native)', 'English (native/bilingual)', 'German (professional)', 'Spanish (elementary)'],
 };
