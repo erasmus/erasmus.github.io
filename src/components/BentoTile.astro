@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+interface Props { project: CollectionEntry<'projects'> }
+const { project } = Astro.props;
+const { title, tile, image, span, domain, years, summary } = project.data;
+---
+<a href={`/projects/${project.id}/`} class={`tile tile-${tile} span-${span}`}>
+  {tile === 'image' && image && (
+    <Image src={image} alt="" widths={[400, 800, 1200]} sizes="(max-width: 600px) 100vw, 50vw" />
+  )}
+  {tile === 'logo' && image && (
+    <div class="logo-panel"><Image src={image} alt="" width={120} height={120} /></div>
+  )}
+  <div class="tile-text">
+    <h3>{title}</h3>
+    <p class="label">{domain} · {years}</p>
+    {span !== 'sm' && <p class="summary">{summary}</p>}
+  </div>
+</a>
+<style>
+  .tile { display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--rule); background: var(--tile); transition: background-color 150ms ease-out, border-color 150ms ease-out; overflow: hidden; }
+  .tile:hover { background: rgba(31, 30, 29, 0.08); border-color: var(--ink-muted); }
+  .tile :global(img) { width: 100%; object-fit: cover; flex: 1; min-height: 0; }
+  .logo-panel { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .tile-text { padding: 14px 16px 16px; }
+  .tile-text h3 { font-size: 1.15rem; }
+  .tile-text .summary { font-size: 0.85rem; color: var(--ink-muted); margin-top: 4px; }
+  .span-lg .tile-text h3 { font-size: 1.5rem; }
+  @media (min-width: 900px) {
+    .span-md { grid-column: span 2; }
+    .span-lg { grid-column: span 2; grid-row: span 2; }
+  }
+  @media (min-width: 600px) and (max-width: 899.98px) {
+    .span-lg { grid-column: span 2; }
+  }
+</style>

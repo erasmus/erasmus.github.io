@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Prose from '../../layouts/Prose.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { year: String(post.data.date.getUTCFullYear()), slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const dateFmt = post.data.date.toLocaleDateString('en-GB', {
+  day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
+});
+---
+<Base title={post.data.title} description={post.data.description}>
+  <article>
+    <header class="prose-width">
+      <p class="label"><time datetime={post.data.date.toISOString().slice(0, 10)}>{dateFmt}</time></p>
+      <h1>{post.data.title}</h1>
+    </header>
+    <Prose><Content /></Prose>
+    {post.data.substackUrl && (
+      <p class="prose-width"><a href={post.data.substackUrl}>Also published on Substack</a></p>
+    )}
+  </article>
+</Base>
+<style>
+  article header { margin-block: 24px 8px; }
+  article h1 { font-size: 2.2rem; margin-top: 6px; }
+</style>

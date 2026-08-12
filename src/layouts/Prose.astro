@@ -1,0 +1,8 @@
+<div class="prose prose-width"><slot /></div>
+<style is:global>
+  .prose > * + * { margin-top: 1em; }
+  .prose h2, .prose h3 { margin-top: 1.6em; }
+  .prose img { margin-block: 1.5em; }
+  .prose blockquote { border-left: 2px solid var(--rule); padding-left: 1em; color: var(--ink-muted); }
+  .prose pre { padding: 1em; overflow-x: auto; background: var(--tile); }
+</style>

@@ -1,0 +1,76 @@
+:root {
+  --paper: rgb(240, 238, 230);
+  --ink: rgb(31, 30, 29);
+  --ink-muted: rgb(109, 106, 100);
+  --rule: rgba(31, 30, 29, 0.15);
+  --tile: rgba(31, 30, 29, 0.04);
+  --link-hover: rgb(55, 54, 54);
+  --font-serif: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  --font-head: "Newsreader Variable", Newsreader, "Times New Roman", serif;
+  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: Menlo, Consolas, "Roboto Mono", "Liberation Mono", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+html { background: var(--paper); color: var(--ink); }
+
+body {
+  font: 400 18px/1.6 var(--font-serif);
+  letter-spacing: 0.02em;
+  font-feature-settings: "kern" 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: normal;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+  text-decoration-thickness: 0.08em;
+  transition: color 150ms ease-out;
+}
+a:hover { color: var(--link-hover); }
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+code, pre { font-family: var(--font-mono); font-size: 0.85em; }
+
+.prose-width { max-width: 620px; margin-inline: auto; padding-inline: 20px; }
+.wide-width { max-width: 1080px; margin-inline: auto; padding-inline: 20px; }
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+}
+.skip-link:focus { left: 8px; top: 8px; z-index: 10; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0ms !important; }
+}

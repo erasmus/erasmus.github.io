@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Prose from '../../layouts/Prose.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const d = project.data;
+---
+<Base title={d.title} description={d.summary}>
+  <article>
+    <header class="prose-width">
+      <p class="label">{d.domain} · {d.years}</p>
+      <h1>{d.title}</h1>
+      <p class="role">{d.role}, {d.org}</p>
+    </header>
+    <Prose><Content /></Prose>
+    {d.links && (
+      <ul class="links prose-width">
+        {d.links.map((l) => <li><a href={l.url}>{l.label}</a></li>)}
+      </ul>
+    )}
+    <p class="prose-width back"><a href="/#projects">← All projects</a></p>
+  </article>
+</Base>
+<style>
+  article header { margin-block: 24px 8px; }
+  article h1 { font-size: 2rem; margin-top: 6px; }
+  .role { color: var(--ink-muted); font-family: var(--font-sans); font-size: 14px; margin-top: 4px; }
+  .links { margin-top: 1.5em; padding-left: 1.2em; }
+  .back { margin-block: 2em; }
+  .back a { font-family: var(--font-sans); font-size: 13px; text-decoration: none; }
+</style>

@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import CvSection from '../components/CvSection.astro';
+import CreditsSection from '../components/CreditsSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import { SITE } from '../data/site';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+<Base title={SITE.name} description={SITE.description}>
+  <section class="hero prose-width">
+    <h1>{SITE.name}</h1>
+    <p class="lede">{SITE.lede} {SITE.description}</p>
+    <p class="label">{SITE.location}</p>
+  </section>
+
+  <section id="projects" class="projects" aria-labelledby="projects-heading">
+    <h2 id="projects-heading" class="label wide-width">Selected work</h2>
+    <BentoGrid />
+  </section>
+
+  <CvSection />
+  <CreditsSection />
+
+  <section id="writing" class="prose-width" aria-labelledby="writing-heading">
+    <h2 id="writing-heading">Writing</h2>
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li>
+          <a href={`/${post.data.date.getUTCFullYear()}/${post.id}/`}>{post.data.title}</a>
+          <span class="label">{post.data.date.toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' })}</span>
+        </li>
+      ))}
+    </ul>
+    <p><a class="all-posts" href="/writing/">All writing →</a></p>
+  </section>
+
+  <ContactSection />
+</Base>
+<style>
+  .hero { margin-block: 48px 56px; text-align: center; }
+  .hero h1 { font-size: 2.6rem; }
+  .hero .lede { max-width: 34em; margin: 12px auto 8px; }
+  .projects { margin-block: 32px 64px; }
+  .projects h2 { display: block; margin-bottom: 12px; }
+  :global(#cv), :global(#credits), :global(#writing), :global(#contact) { margin-block: 64px; width: 100%; }
+  .post-list { list-style: none; padding: 0; margin-top: 1em; }
+  .post-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-block: 0.5em; border-bottom: 1px solid var(--rule); }
+  .all-posts { font-family: var(--font-sans); font-size: 13px; text-decoration: none; }
+</style>

@@ -1,0 +1,38 @@
+---
+import { CV } from '../data/cv';
+---
+<section id="cv" class="prose-width" aria-labelledby="cv-heading">
+  <h2 id="cv-heading">CV</h2>
+  <h3 class="label">Experience</h3>
+  {CV.experience.map((o) => (
+    <div class="org">
+      <h4>{o.org}</h4>
+      {o.positions.map((p) => (
+        <div class="position">
+          <p class="title-line"><span class="title">{p.title}</span><span class="label dates">{p.dates}</span></p>
+          {p.note && <p class="note">{p.note}</p>}
+        </div>
+      ))}
+    </div>
+  ))}
+  <h3 class="label">Education</h3>
+  {CV.education.map((e) => (
+    <div class="org">
+      <p class="title-line"><span class="title">{e.institution}</span><span class="label dates">{e.years}</span></p>
+      <p class="note">{e.qualification}</p>
+    </div>
+  ))}
+  <h3 class="label">Skills</h3>
+  <p class="note">{CV.skills.join(' · ')}</p>
+  <h3 class="label">Languages</h3>
+  <p class="note">{CV.languages.join(' · ')}</p>
+</section>
+<style>
+  section h2 { font-size: 1.7rem; }
+  section h3.label { margin-top: 2em; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .org { margin-top: 1.2em; }
+  .org h4 { font-size: 1.1rem; }
+  .position { margin-top: 0.4em; }
+  .title-line { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .note { color: var(--ink-muted); font-size: 0.9rem; margin-top: 2px; }
+</style>

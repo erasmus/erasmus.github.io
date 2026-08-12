@@ -1,0 +1,17 @@
+---
+import { CREDITS } from '../data/credits';
+---
+<section id="credits" class="prose-width" aria-labelledby="credits-heading">
+  <h2 id="credits-heading">Beyond work</h2>
+  <ul>
+    {CREDITS.map((c) => (
+      <li><span>{c.title}</span> — <span class="muted">{c.org}, {c.year}</span></li>
+    ))}
+  </ul>
+</section>
+<style>
+  section h2 { font-size: 1.7rem; }
+  ul { list-style: none; padding: 0; margin-top: 1em; }
+  li { padding-block: 0.5em; border-bottom: 1px solid var(--rule); }
+  .muted { color: var(--ink-muted); }
+</style>

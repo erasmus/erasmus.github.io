@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+---
+<Base title={`Page not found — ${SITE.name}`} description="Page not found.">
+  <div class="prose-width nf">
+    <h1>Page not found</h1>
+    <p><a href="/">← Home</a></p>
+  </div>
+</Base>
+<style>
+  .nf { text-align: center; margin-block: 96px; }
+  .nf h1 { font-style: italic; font-weight: 400; font-size: 2.6rem; }
+  .nf p { margin-top: 1.5em; }
+</style>
