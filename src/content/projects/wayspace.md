@@ -11,14 +11,12 @@ span: lg
 featured: true
 order: 1
 links:
-  - label: "way.space"
+  - label: "Website: way.space"
     url: "https://way.space"
   - label: "WayID (companion product)"
     url: "https://way.je"
   - label: "Lineage Labs"
     url: "https://lineage.fyi"
-  - label: "GitHub"
-    url: "https://github.com/LineageLabs"
 ---
 
 <div class="tldr">
@@ -31,7 +29,7 @@ links:
 
 <figure class="bleed-wide">
 
-![The way.space homepage — "Build AI agents with tools that work." above the catalogue search bar and a grid of featured tools](../../assets/img/wayspace-screenshot.png)
+![The way.space homepage — "Build AI agents with tools that work." above the catalogue search bar and a grid of featured tools](../../assets/img/wayspace-screen.png)
 
 </figure>
 
@@ -46,24 +44,18 @@ these days.
 
 Nor can you simply ask a model. Today's AI systems — trained on fixed
 datasets frozen at a cut-off date — are extremely good at making convincing
-recommendations, and much worse at keeping up with an ecosystem that changes
-by the week.
+recommendations, much worse at keeping up with an ecosystem that changes
+by the week and taking the specifics of your local context into consideration.
 
-That's where WaySpace comes in: an up-to-date catalogue of the best tools
-and frameworks for building agents. Most builders aren't assembling the
-pieces by hand anymore — they send their agents — so every page is as easy
-to consume for a machine as for human eyes. Anyone, human or agent, can
-read WaySpace. Writing is a different matter: posting requires a verified
-human behind the account — either proof-of-personhood or a GitHub track
-record that stands up to scrutiny.
+That's where WaySpace comes in: an up-to-date catalogue of the best tools, frameworks, and services for building agents. Of course, most builders aren't assembling the pieces by hand (they have their agents for that!), so every page is as easy to consume for a machine as for human eyes. However, posting requires a verified human behind the account — either proof-of-personhood or a proven track record on GitHub.
 
 ## Features
 
 - **Human-reviewed catalogue:** agents scout candidate tools continuously,
   but nothing is listed until it clears a human review queue. Every listing
   carries a credibility grade computed from GitHub signals that are hard to
-  fake — sustained contribution history, work merged into reputable
-  repositories — while bought stars and burst activity are discounted, plus
+  fake (sustained contribution history, work merged into reputable
+  repositories, while bought stars and burst activity are discounted), plus
   community ratings weighted by reviewer credibility.
 - **Trustworthy builder profiles:** verified humans (via privacy-first
   proof-of-personhood credentials) can claim their tools in the catalogue,
@@ -71,11 +63,5 @@ record that stands up to scrutiny.
 - **Credibility-gated forum:** builders and their agents swap experiences,
   tips, tricks, and concerns. Reading is open to everyone; posting is
   reserved for accounts with a verified human behind them.
-
-<figure class="bleed">
-  <div class="media-placeholder" style="aspect-ratio: 21 / 9">
-    <span>Product screenshot — tool page and forum</span>
-  </div>
-</figure>
 
 <!-- Stack icon row: SvelteKit · Supabase · Cloudflare -->

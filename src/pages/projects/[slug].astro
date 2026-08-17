@@ -21,9 +21,12 @@ const d = project.data;
     </header>
     <Prose><Content /></Prose>
     {d.links && (
-      <ul class="links prose-width">
-        {d.links.map((l) => <li><a href={l.url}>{l.label}</a></li>)}
-      </ul>
+      <section class="links-box" aria-labelledby="links-heading">
+        <h2 id="links-heading">Links</h2>
+        <ul class="links">
+          {d.links.map((l) => <li><a href={l.url}>{l.label}</a></li>)}
+        </ul>
+      </section>
     )}
     <p class="prose-width back"><a class="more-link" href="/projects/">← All projects</a></p>
   </article>
@@ -32,7 +35,17 @@ const d = project.data;
   article header { margin-block: 24px 8px; }
   article h1 { font-size: 2rem; margin-top: 6px; }
   .role { color: var(--ink-muted); font-family: var(--font-sans); font-size: 14px; margin-top: 4px; }
-  .links { margin-top: 1.5em; padding-left: 1.2em; }
+  /* Tinted card breaking a little wider than the prose column, like the
+     front page's Writing section. */
+  .links-box {
+    width: min(760px, 100vw - 40px);
+    margin: 64px auto;
+    background: var(--tile);
+    padding: 28px 32px 32px;
+  }
+  @media (max-width: 599.98px) { .links-box { padding: 24px 20px 28px; } }
+  .links-box > * { max-width: 580px; margin-inline: auto; }
+  .links { margin-top: 1em; padding-left: 1.2em; }
   .back { margin-block: 2em; }
   .back a { font-family: var(--font-sans); font-size: 13px; text-decoration: none; }
 </style>
