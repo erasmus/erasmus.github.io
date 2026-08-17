@@ -4,7 +4,7 @@ role: "Co-Founder"
 org: "Lineage Labs"
 years: "2026 – present"
 domain: "AI agent ecosystem"
-summary: "A credibility-gated catalogue for AI-agent builders — research into the open-source slop crisis led to a directory where only verified humans and proven builders can post."
+summary: "The anti-slop catalogue for AI agent builders — every tool human-reviewed before it's listed, scored on signals that can't be bought, and discussed only by verified humans and proven builders."
 tile: image
 image: ../../assets/placeholder-wide.png
 span: lg
@@ -23,84 +23,59 @@ links:
 
 <div class="tldr">
   <p class="label">TL;DR</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua, quis nostrud
-  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  <p>AI moves at an insane pace — not always with quality. WaySpace is an
+  up-to-date, human-reviewed catalogue of the best tools for building agents,
+  plus a forum where every account has a verified human behind it.
   Live at <a href="https://way.space">way.space</a>.</p>
 </div>
 
-<figure class="bleed">
-  <div class="media-placeholder" style="aspect-ratio: 21 / 9">
-    <span>Full-width hero graphic</span>
-  </div>
-</figure>
-
-## The brief
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
-
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus
-error sit voluptatem accusantium doloremque laudantium.
-
-## The research
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Totam rem aperiam,
-eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-aut odit aut fugit, sed quia consequuntur magni dolores eos.
-
-> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-> consectetur, adipisci velit, sed quia non numquam eius modi tempora.
-
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
-laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
-
-<figure class="bleed">
-  <div class="media-placeholder" style="aspect-ratio: 21 / 9">
-    <span>Full-width research graphic</span>
-  </div>
-  <figcaption>Lorem ipsum caption dolor sit amet.</figcaption>
-</figure>
-
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
-excepturi sint occaecati cupiditate non provident.
-
-Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-
 <figure class="bleed-wide">
-  <div class="video-slot media-placeholder">
-    <span>Video embed — swap for YouTube iframe</span>
-  </div>
-  <figcaption>Lorem ipsum video caption.</figcaption>
+
+![The way.space homepage — "Build AI agents with tools that work." above the catalogue search bar and a grid of featured tools](../../assets/img/wayspace-screenshot.png)
+
 </figure>
 
-## What happened
+## The idea: an anti-slop catalogue
 
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda
-est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis
-debitis aut rerum necessitatibus saepe eveniet.
+The generative-AI wave brought a deluge of new tools, frameworks, runtimes,
+and services. Some of it is truly fantastic, some of it far less so — and
+from the outside it is terribly difficult to tell the difference. Claims on
+a project's website or GitHub repository rarely capture the full story, and
+[fake GitHub stars are a dime a dozen](https://arxiv.org/abs/2412.13459)
+these days.
 
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus asperiores
-repellat.
+Nor can you simply ask a model. Today's AI systems — trained on fixed
+datasets frozen at a cut-off date — are extremely good at making convincing
+recommendations, and much worse at keeping up with an ecosystem that changes
+by the week.
 
-<figure>
-  <div class="media-placeholder" style="aspect-ratio: 3 / 2">
-    <span>Inline figure</span>
+That's where WaySpace comes in: an up-to-date catalogue of the best tools
+and frameworks for building agents. Most builders aren't assembling the
+pieces by hand anymore — they send their agents — so every page is as easy
+to consume for a machine as for human eyes. Anyone, human or agent, can
+read WaySpace. Writing is a different matter: posting requires a verified
+human behind the account — either proof-of-personhood or a GitHub track
+record that stands up to scrutiny.
+
+## Features
+
+- **Human-reviewed catalogue:** agents scout candidate tools continuously,
+  but nothing is listed until it clears a human review queue. Every listing
+  carries a credibility grade computed from GitHub signals that are hard to
+  fake — sustained contribution history, work merged into reputable
+  repositories — while bought stars and burst activity are discounted, plus
+  community ratings weighted by reviewer credibility.
+- **Trustworthy builder profiles:** verified humans (via privacy-first
+  proof-of-personhood credentials) can claim their tools in the catalogue,
+  promote their work, and engage directly with the people using it.
+- **Credibility-gated forum:** builders and their agents swap experiences,
+  tips, tricks, and concerns. Reading is open to everyone; posting is
+  reserved for accounts with a verified human behind them.
+
+<figure class="bleed">
+  <div class="media-placeholder" style="aspect-ratio: 21 / 9">
+    <span>Full-width product screenshot — catalogue and tool page</span>
   </div>
-  <figcaption>Lorem ipsum inline caption.</figcaption>
 </figure>
 
-## Looking back
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+<!-- Stack icon row: SvelteKit · Supabase · Cloudflare -->
