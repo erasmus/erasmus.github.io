@@ -1,0 +1,31 @@
+---
+// Full wordmark logo replacing the org name on the home-page CV. `logo` is a
+// filename in src/assets/logos; the image carries the org name as alt text.
+interface Props { logo: string; name: string }
+const { logo, name } = Astro.props;
+const files = import.meta.glob<string>('../assets/logos/*.svg', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+const src = files[`../assets/logos/${logo}`];
+// Optical size corrections: some SVGs have internal padding (Pendulum) or dense
+// wordmarks (Concordium), so a uniform height renders them visually mismatched.
+const heights: Record<string, string> = {
+  'Concordium_Logo_Black_full.svg': '19px',
+  'Pendulum_Logo_wordmark_full.svg': '36px',
+  'London_school_of_economics_logo_full.svg': '30px',
+};
+const height = heights[logo];
+---
+{src ? <img class="logo" src={src} alt={name} style={height ? `height: ${height}` : undefined} /> : name}
+<style>
+  /* Same monochrome treatment as CvMark; brand colour on hover of the
+     surrounding entry (see .org:hover in CvSection). */
+  .logo {
+    height: 24px; width: auto; max-width: 190px; object-fit: contain; object-position: left center; flex: none;
+    filter: grayscale(1) brightness(0.55) contrast(1.1);
+    opacity: 0.8;
+    transition: filter 150ms ease-out, opacity 150ms ease-out;
+  }
+</style>

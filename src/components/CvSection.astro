@@ -1,6 +1,7 @@
 ---
 import { CV } from '../data/cv';
 import CvMark from './CvMark.astro';
+import CvLogo from './CvLogo.astro';
 interface Props { full?: boolean }
 const { full = false } = Astro.props;
 // The home page shows only the four most recent roles, one per organisation, with
@@ -16,7 +17,11 @@ const Heading = full ? 'h1' : 'h2';
   <h3 class="label">Experience</h3>
   {experience.map((o) => (
     <div class="org">
-      <h4>{!full && <CvMark icon={o.icon} name={o.org} />}{o.org}</h4>
+      <h4>{full
+        ? o.org
+        : o.logo
+          ? <CvLogo logo={o.logo} name={o.org} />
+          : <><CvMark icon={o.icon} name={o.org} />{o.org}</>}</h4>
       {o.positions.map((p) => (
         <div class="position">
           <p class="title-line"><span class="title">{p.title}</span><span class="label dates">{p.dates}</span></p>
@@ -28,7 +33,11 @@ const Heading = full ? 'h1' : 'h2';
   <h3 class="label">Education</h3>
   {education.map((e) => (
     <div class="org">
-      <p class="title-line"><span class="title inst">{!full && <CvMark icon={e.icon} name={e.institution} />}{e.institution}</span><span class="label dates">{e.years}</span></p>
+      <p class="title-line"><span class="title inst">{full
+        ? e.institution
+        : e.logo
+          ? <CvLogo logo={e.logo} name={e.institution} />
+          : <><CvMark icon={e.icon} name={e.institution} />{e.institution}</>}</span><span class="label dates">{e.years}</span></p>
       <p class="note">{e.qualification}</p>
     </div>
   ))}
@@ -45,7 +54,7 @@ const Heading = full ? 'h1' : 'h2';
   section h1 { font-size: 2.2rem; }
   section h3.label { margin-top: 2em; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
   .org { margin-top: 1.2em; }
-  .org:hover :global(img.mark) { filter: none; opacity: 1; }
+  .org:hover :global(img.mark), .org:hover :global(img.logo) { filter: none; opacity: 1; }
   .org h4 { font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
   .inst { display: inline-flex; align-items: center; gap: 10px; }
   .position { margin-top: 0.4em; }
