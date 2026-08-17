@@ -33,12 +33,15 @@ const Heading = full ? 'h1' : 'h2';
   <h3 class="label">Education</h3>
   {education.map((e) => (
     <div class="org">
-      <p class="title-line"><span class="title inst">{full
+      <h4>{full
         ? e.institution
         : e.logo
           ? <CvLogo logo={e.logo} name={e.institution} />
-          : <><CvMark icon={e.icon} name={e.institution} />{e.institution}</>}</span><span class="label dates">{e.years}</span></p>
-      <p class="note">{e.qualification}</p>
+          : <><CvMark icon={e.icon} name={e.institution} />{e.institution}</>}</h4>
+      <div class="position">
+        <p class="title-line"><span class="title">{e.qualification}</span><span class="label dates">{e.years}</span></p>
+        {e.note && <p class="note">{e.note}</p>}
+      </div>
     </div>
   ))}
   {full && (
@@ -56,7 +59,6 @@ const Heading = full ? 'h1' : 'h2';
   .org { margin-top: 1.2em; }
   .org:hover :global(img.mark), .org:hover :global(img.logo) { filter: none; opacity: 1; }
   .org h4 { font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
-  .inst { display: inline-flex; align-items: center; gap: 10px; }
   .position { margin-top: 0.4em; }
   .title-line { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
   .note { color: var(--ink-muted); font-size: 0.9rem; margin-top: 2px; }

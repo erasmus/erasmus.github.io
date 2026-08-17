@@ -12,8 +12,9 @@ const src = files[`../assets/logos/${logo}`];
 // Optical size corrections: some SVGs have internal padding (Pendulum) or dense
 // wordmarks (Concordium), so a uniform height renders them visually mismatched.
 const heights: Record<string, string> = {
+  'lineage-labs-logo-dark.svg': '20px',
   'Concordium_Logo_Black_full.svg': '19px',
-  'Pendulum_Logo_wordmark_full.svg': '36px',
+  'Pendulum_Logo_wordmark_full.svg': '44px',
   'London_school_of_economics_logo_full.svg': '30px',
 };
 const height = heights[logo];
