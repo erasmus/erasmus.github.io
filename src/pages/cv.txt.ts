@@ -55,7 +55,7 @@ export async function GET(context: APIContext) {
   if (projects.length > 0) {
     lines.push(...rule('Selected projects'));
     for (const p of projects) {
-      lines.push(`${p.data.title} — ${p.data.role}, ${p.data.org} (${p.data.years})`);
+      lines.push(`${p.data.title} — ${p.data.role}, ${p.data.org}`);
       lines.push(`  ${p.data.summary}`);
       lines.push(`  ${projectUrl(site, p)}`);
       lines.push('');

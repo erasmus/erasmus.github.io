@@ -2,7 +2,6 @@
 title: "WayID"
 role: "Co-Founder"
 org: "Lineage Labs"
-years: "2026 – present"
 domain: "Digital identity"
 summary: "Provenance certificates for AI agents — WayID binds each agent's cryptographic identity to a verified human that anyone can check in one lookup."
 tile: image

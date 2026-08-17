@@ -18,9 +18,12 @@ const projects = defineCollection({
     z
       .object({
         title: z.string(),
+        // Optional display title for the bento tiles on the home and /projects
+        // pages (e.g. "AI agent builder hub" for WaySpace); the project page
+        // itself always uses `title`.
+        tileTitle: z.string().optional(),
         role: z.string(),
         org: z.string(),
-        years: z.string(),
         domain: z.string(),
         summary: z.string(),
         tile: z.enum(['image', 'logo', 'text']),
