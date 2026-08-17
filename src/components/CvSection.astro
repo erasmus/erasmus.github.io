@@ -57,8 +57,9 @@ const Heading = full ? 'h1' : 'h2';
   section h1 { font-size: 2.2rem; }
   section h3.label { margin-top: 2em; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
   .org { margin-top: 1.2em; }
-  .org:hover :global(img.mark), .org:hover :global(img.logo) { filter: none; opacity: 1; }
-  .org h4 { font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+  /* Org outranks the role beneath it: Newsreader reads optically smaller than the
+     Palatino body text, so 1.1rem left it looking like a subheading of the role. */
+  .org h4 { font-size: 1.4rem; display: flex; align-items: center; gap: 10px; }
   .position { margin-top: 0.4em; }
   .title-line { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
   .note { color: var(--ink-muted); font-size: 0.9rem; margin-top: 2px; }

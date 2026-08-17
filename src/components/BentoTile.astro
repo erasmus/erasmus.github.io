@@ -30,8 +30,15 @@ const { title, tile, image, span, domain, years, summary } = project.data;
   @media (min-width: 900px) {
     .span-md { grid-column: span 2; }
     .span-lg { grid-column: span 2; grid-row: span 2; }
+    /* Widest tile reads as a banner: logo left, title and summary beside it. */
+    .span-xl { grid-column: span 3; flex-direction: row; align-items: stretch; }
+    .span-xl .logo-panel { flex: 0 0 34%; border-right: 1px solid var(--rule); }
+    .span-xl .logo-panel :global(img) { width: auto; max-width: 100%; max-height: 100%; flex: none; object-fit: contain; }
+    .span-xl .tile-text { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 24px 32px; }
+    .span-xl .tile-text h3 { font-size: 1.5rem; }
+    .span-xl .tile-text .summary { font-size: 0.95rem; margin-top: 8px; max-width: 42em; }
   }
   @media (min-width: 600px) and (max-width: 899.98px) {
-    .span-lg { grid-column: span 2; }
+    .span-lg, .span-xl { grid-column: span 2; }
   }
 </style>

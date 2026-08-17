@@ -10,7 +10,6 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 ---
 <Base title={SITE.name} description={SITE.description}>
   <section class="hero prose-width">
-    <h1>{SITE.name}</h1>
     <p class="lede">{SITE.lede} {SITE.description}</p>
     <p class="label">{SITE.location}</p>
   </section>
@@ -23,7 +22,7 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 
   <CvSection />
 
-  <section id="writing" class="prose-width" aria-labelledby="writing-heading">
+  <section id="writing" class="writing" aria-labelledby="writing-heading">
     <h2 id="writing-heading">Writing</h2>
     <ul class="post-list">
       {posts.map((post) => (
@@ -42,8 +41,27 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .hero .lede { max-width: 34em; margin: 12px auto 8px; }
   .projects { margin-block: 32px 64px; }
   .projects h2 { display: block; margin-bottom: 12px; }
-  :global(#cv), :global(#writing) { margin-block: 64px; width: 100%; }
+  :global(#cv) { margin-block: 64px; width: 100%; }
+  /* Tinted card that breaks a little wider than the prose column, like .tldr. */
+  .writing {
+    width: min(760px, 100vw - 40px);
+    margin: 64px auto;
+    background: var(--tile);
+    padding: 28px 32px 32px;
+  }
+  @media (max-width: 599.98px) { .writing { padding: 24px 20px 28px; } }
+  /* Content column matches .prose-width's 580px so it lines up with the CV above. */
+  .writing > * { max-width: 580px; margin-inline: auto; }
   .post-list { list-style: none; padding: 0; margin-top: 1em; }
   .post-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-block: 0.5em; border-bottom: 1px solid var(--rule); }
+  .post-list li:last-child { border-bottom: 0; }
+  /* Underline wipes in from the left on hover instead of sitting there statically. */
+  .post-list a {
+    text-decoration: none;
+    padding-bottom: 2px;
+    background: linear-gradient(var(--ink), var(--ink)) 0 100% / 0 1px no-repeat;
+    transition: background-size 200ms ease-out, color 150ms ease-out;
+  }
+  .post-list a:hover { background-size: 100% 1px; }
   .more { margin-top: 1.5em; }
 </style>

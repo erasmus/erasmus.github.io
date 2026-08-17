@@ -7,7 +7,7 @@ domain: "Media"
 summary: "One-line summary of the project and its outcome."
 tile: logo
 image: ../../assets/placeholder-logo.png
-span: sm
+span: xl
 featured: false
 order: 6
 ---

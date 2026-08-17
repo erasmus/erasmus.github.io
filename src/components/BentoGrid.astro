@@ -1,14 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
 import BentoTile from './BentoTile.astro';
-const projects = (await getCollection('projects', ({ data }) => data.featured))
+// The home page shows featured projects only; /projects/ passes `all` for everything.
+interface Props { all?: boolean }
+const { all = false } = Astro.props;
+const projects = (await getCollection('projects', ({ data }) => all || data.featured))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 <div class="bento wide-width">
   {projects.map((p) => <BentoTile project={p} />)}
 </div>
 <style>
-  .bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; grid-auto-flow: dense; }
-  @media (max-width: 899.98px) { .bento { grid-template-columns: repeat(2, 1fr); } }
+  /* Rows 1–2 size to the lead image tiles; every row after them is fixed to the
+     same height as the small tiles in row 2, so the grid keeps a steady rhythm. */
+  .bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto; grid-auto-rows: 336px; gap: 16px; grid-auto-flow: dense; }
+  @media (max-width: 899.98px) { .bento { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; grid-auto-rows: auto; } }
   @media (max-width: 599.98px) { .bento { grid-template-columns: 1fr; } }
 </style>

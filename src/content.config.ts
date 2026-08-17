@@ -25,7 +25,7 @@ const projects = defineCollection({
         summary: z.string(),
         tile: z.enum(['image', 'logo', 'text']),
         image: image().optional(),
-        span: z.enum(['sm', 'md', 'lg']).default('sm'),
+        span: z.enum(['sm', 'md', 'lg', 'xl']).default('sm'),
         links: z.array(z.object({ label: z.string(), url: z.string().url() })).optional(),
         featured: z.boolean().default(false),
         order: z.number(),
