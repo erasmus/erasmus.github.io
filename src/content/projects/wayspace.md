@@ -1,12 +1,12 @@
 ---
-title: "WaySpace"
+title: "AI agent builder hub"
 role: "Co-Founder"
 org: "Lineage Labs"
 years: "2026 – present"
 domain: "AI agent ecosystem"
-summary: "A credibility-gated catalogue for AI-agent builders — research into the open-source slop crisis led to a directory where only verified humans and proven builders can post."
+summary: "The anti-slop catalogue for AI agent builders: every tool human-reviewed before it's listed, scored on signals that can't be bought, and discussed only by verified builders and their agents."
 tile: image
-image: ../../assets/placeholder-wide.png
+image: ../../assets/img/wayspace-graphic.png
 span: lg
 featured: true
 order: 1
@@ -23,9 +23,7 @@ links:
 
 <div class="tldr">
   <p class="label">TL;DR</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua, quis nostrud
-  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  <p>AI moves at an insane pace — not always with quality. WaySpace is an up-to-date, human-reviewed catalogue of the best tools for building agents, plus a forum where every account has a verified human behind it.
   Live at <a href="https://way.space">way.space</a>.</p>
 </div>
 
@@ -35,16 +33,9 @@ links:
   </div>
 </figure>
 
-## The brief
+## **Concept: Anti-slop AI catalogue** 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
-
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus
-error sit voluptatem accusantium doloremque laudantium.
+With the AI revolution came a deluge of new tools, frameworks, runtimes, products, and services. The claims on the website or the GitHub repository, don’t capture the full story. (Fake stars on [GitHub are a dime a dozen, this days](https://arxiv.org/abs/2412.13459)).
 
 ## The research
 
