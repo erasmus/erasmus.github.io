@@ -11,14 +11,14 @@ span: md
 featured: true
 order: 2
 links:
-  - label: "way.je"
+  - label: "Website: way.je"
     url: "https://way.je"
   - label: "WaySpace (companion product)"
     url: "https://way.space"
   - label: "Lineage Labs"
     url: "https://lineage.fyi"
-  - label: "GitHub"
-    url: "https://github.com/LineageLabs"
+  - label: "Presentation at ClawCon Copenhagen"
+    url: "https://www.youtube.com/watch?v=B2g6qJJokXQ&t=6413s"
 ---
 
 <div class="tldr">
@@ -515,9 +515,10 @@ excepturi sint occaecati cupiditate non provident, similique sunt in culpa.
 
 <figure class="bleed-wide">
   <div class="video-slot media-placeholder">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/XiLL9DQwJQg?si=UtQoQT_L8bXkmvU2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <span>Video embed — swap for YouTube iframe</span>
   </div>
-  <figcaption>Lorem ipsum video caption.</figcaption>
+  <figcaption>Demo of an agent being claimed on Telegram.</figcaption>
 </figure>
 
 ## What happened

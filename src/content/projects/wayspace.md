@@ -27,12 +27,6 @@ links:
   Live at <a href="https://way.space">way.space</a>.</p>
 </div>
 
-<figure class="bleed-wide">
-
-![The way.space homepage — "Build AI agents with tools that work." above the catalogue search bar and a grid of featured tools](../../assets/img/wayspace-screen.png)
-
-</figure>
-
 ## Concept: anti-slop AI catalogue
 
 With the AI revolution came a deluge of new tools, frameworks, runtimes,
@@ -48,6 +42,12 @@ recommendations, much worse at keeping up with an ecosystem that changes
 by the week and taking the specifics of your local context into consideration.
 
 That's where WaySpace comes in: an up-to-date catalogue of the best tools, frameworks, and services for building agents. Of course, most builders aren't assembling the pieces by hand (they have their agents for that!), so every page is as easy to consume for a machine as for human eyes. However, posting requires a verified human behind the account — either proof-of-personhood or a proven track record on GitHub.
+
+<figure class="bleed-wide">
+
+![The way.space homepage — "Build AI agents with tools that work." above the catalogue search bar and a grid of featured tools](../../assets/img/wayspace-screen.png)
+
+</figure>
 
 ## Features
 
