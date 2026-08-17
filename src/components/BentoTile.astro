@@ -19,9 +19,11 @@ const { title, tile, image, span, domain, years, summary } = project.data;
   </div>
 </a>
 <style>
-  .tile { display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--rule); background: var(--tile); transition: background-color 150ms ease-out, border-color 150ms ease-out; overflow: hidden; }
-  .tile:hover { background: rgba(31, 30, 29, 0.08); border-color: var(--ink-muted); }
+  .tile { display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--rule); background: var(--tile); transition: background-color 150ms ease-out, border-color 150ms ease-out, transform 200ms ease-out, box-shadow 200ms ease-out; overflow: hidden; }
+  .tile:hover { background: rgba(31, 30, 29, 0.08); border-color: var(--ink); transform: translateY(-3px); box-shadow: 0 12px 24px -14px rgba(31, 30, 29, 0.35); }
   .tile :global(img) { width: 100%; object-fit: cover; flex: 1; min-height: 0; }
+  .tile-image :global(img) { transition: transform 400ms ease-out; }
+  .tile-image:hover :global(img) { transform: scale(1.04); }
   .logo-panel { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
   .tile-text { padding: 14px 16px 16px; }
   .tile-text h3 { font-size: 1.15rem; }
