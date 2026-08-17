@@ -2,7 +2,6 @@
 title: "PLACEHOLDER — Fourth project"
 role: "Role goes here"
 org: "Organisation"
-years: "2020"
 domain: "Research"
 summary: "One-line summary of the project and its outcome."
 tile: text

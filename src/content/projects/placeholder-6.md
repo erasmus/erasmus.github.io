@@ -2,7 +2,6 @@
 title: "PLACEHOLDER — Sixth project"
 role: "Role goes here"
 org: "Organisation"
-years: "2014"
 domain: "Media"
 summary: "One-line summary of the project and its outcome."
 tile: logo

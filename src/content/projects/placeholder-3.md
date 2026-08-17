@@ -2,7 +2,6 @@
 title: "PLACEHOLDER — Third project"
 role: "Role goes here"
 org: "Organisation"
-years: "2021–2023"
 domain: "Blockchain"
 summary: "One-line summary of the project and its outcome."
 tile: logo
