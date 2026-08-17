@@ -7,6 +7,7 @@ domain: "Research"
 summary: "One-line summary of the project and its outcome."
 tile: text
 span: sm
+draft: true
 featured: true
 order: 4
 links:

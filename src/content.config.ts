@@ -29,6 +29,9 @@ const projects = defineCollection({
         links: z.array(z.object({ label: z.string(), url: z.string().url() })).optional(),
         featured: z.boolean().default(false),
         order: z.number(),
+        // Drafts still render on the site (useful while designing) but are
+        // excluded from the machine-readable exports (llms.txt, cv.txt).
+        draft: z.boolean().default(false),
       })
       .superRefine((val, ctx) => {
         if ((val.tile === 'image' || val.tile === 'logo') && !val.image) {

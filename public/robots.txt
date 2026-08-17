@@ -1,0 +1,9 @@
+# All crawlers welcome, including AI agents and LLM crawlers.
+# Machine-readable site content: https://erasmus.github.io/llms.txt
+# Full content in one document:  https://erasmus.github.io/llms-full.txt
+# Plain-text CV:                 https://erasmus.github.io/cv.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://erasmus.github.io/sitemap-index.xml

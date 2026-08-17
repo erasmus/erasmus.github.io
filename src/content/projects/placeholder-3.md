@@ -8,6 +8,7 @@ summary: "One-line summary of the project and its outcome."
 tile: logo
 image: ../../assets/placeholder-logo.png
 span: sm
+draft: true
 featured: true
 order: 3
 links:

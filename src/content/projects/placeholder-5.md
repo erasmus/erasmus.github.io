@@ -7,6 +7,7 @@ domain: "Fintech"
 summary: "One-line summary of the project and its outcome."
 tile: text
 span: sm
+draft: true
 featured: false
 order: 5
 ---
