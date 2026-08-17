@@ -1,0 +1,58 @@
+---
+// One colleague quote per page load, picked at random by the inline script
+// below; the first quote is the no-JS fallback. Photos live in
+// src/assets/img and fall back to an initial monogram, so a quote can ship
+// before its picture does.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { QUOTES } from '../data/quotes';
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/img/*.{png,jpg,jpeg,webp}', {
+  eager: true,
+});
+---
+<section id="colleagues" class="prose-width" aria-label="What colleagues say">
+  {QUOTES.map((q, i) => {
+    const src = q.image ? files[`../assets/img/${q.image}`]?.default : undefined;
+    return (
+      <figure class="quote" hidden={i !== 0}>
+        {src
+          ? <Image class="portrait" src={src} alt="" width={64} height={64} densities={[1, 2]} />
+          : <span class="portrait monogram" aria-hidden="true">{q.name.charAt(0)}</span>}
+        <blockquote>“{q.quote}”</blockquote>
+        <figcaption class="label">{q.name}</figcaption>
+      </figure>
+    );
+  })}
+</section>
+<script is:inline>
+  (() => {
+    const quotes = document.querySelectorAll('#colleagues .quote');
+    const pick = Math.floor(Math.random() * quotes.length);
+    quotes.forEach((q, i) => (q.hidden = i !== pick));
+  })();
+</script>
+<style>
+  section { margin-block: 64px; }
+  /* Portrait left, quote beside it, author right-aligned under the quote.
+     figcaption must stay a direct child of figure, hence grid over flex. */
+  .quote {
+    display: grid; grid-template-columns: auto 1fr;
+    column-gap: 20px; row-gap: 10px; align-items: start;
+  }
+  /* An explicit display on .quote overrides the hidden attribute's UA rule. */
+  .quote[hidden] { display: none; }
+  .portrait {
+    grid-row: span 2;
+    width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
+  }
+  .monogram {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--tile); border: 1px solid var(--rule); color: var(--ink-muted);
+    font-family: var(--font-head); font-size: 1.7rem; font-weight: 600;
+  }
+  blockquote {
+    font-family: var(--font-head); font-style: italic;
+    font-size: 1.35rem; line-height: 1.45;
+  }
+  figcaption { text-align: right; }
+</style>

@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import BentoGrid from '../components/BentoGrid.astro';
 import CvSection from '../components/CvSection.astro';
+import QuotesSection from '../components/QuotesSection.astro';
 import { SITE } from '../data/site';
 import { getCollection } from 'astro:content';
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
@@ -21,6 +22,8 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
   </section>
 
   <CvSection />
+
+  <QuotesSection />
 
   <section id="writing" class="writing" aria-labelledby="writing-heading">
     <h2 id="writing-heading">Writing</h2>
