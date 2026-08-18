@@ -7,11 +7,8 @@ import { SITE } from '../../data/site';
 <Base title={`CV — ${SITE.name}`} description={`Full curriculum vitae of ${SITE.name}: experience, education, and languages.`}>
   <CvSection full />
   <CreditsSection />
-  <p class="cv-plain"><a href="/cv.txt">Plain-text version</a></p>
 </Base>
 <style>
   :global(#cv) { margin-block: 24px 64px; width: 100%; }
   :global(#credits) { margin-block: 64px; width: 100%; }
-  .cv-plain { margin-block: 0 64px; font-size: 0.85em; color: var(--ink-muted); }
-  .cv-plain a { color: inherit; }
 </style>

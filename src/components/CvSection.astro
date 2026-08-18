@@ -1,28 +1,41 @@
 ---
-import { CV } from '../data/cv';
+import { CV, HOME_MERGED_ORGS } from '../data/cv';
 import CvMark from './CvMark.astro';
 import CvLogo from './CvLogo.astro';
 interface Props { full?: boolean }
 const { full = false } = Astro.props;
-// The home page shows only the four most recent roles, one per organisation, with
-// logo marks; /cv/ renders the complete history as plain text.
+// The home page shows only the three most recent entries, one role per organisation,
+// with logo marks; /cv/ renders the complete history as plain text. An entry can carry
+// more than one organisation: SatoshiPay and Pendulum are the same org under two
+// brands, so the home page folds them into one entry showing both wordmarks.
+const merged = HOME_MERGED_ORGS
+  .map((name) => CV.experience.find((o) => o.org === name))
+  .filter((o) => o !== undefined);
+// The folded entry takes the slot of whichever brand comes first in the history.
+const mergeSlot = CV.experience.find((o) => HOME_MERGED_ORGS.includes(o.org));
 const experience = full
-  ? CV.experience
-  : CV.experience.slice(0, 4).map((o) => ({ ...o, positions: o.positions.slice(0, 1) }));
-const education = full ? CV.education : CV.education.slice(0, 3);
+  ? CV.experience.map((o) => ({ orgs: [o], positions: o.positions }))
+  : CV.experience
+      .flatMap((o) => {
+        if (!HOME_MERGED_ORGS.includes(o.org)) return [{ orgs: [o], positions: o.positions.slice(0, 1) }];
+        return o === mergeSlot ? [{ orgs: merged, positions: merged[0].positions.slice(0, 1) }] : [];
+      })
+      .slice(0, 3);
+const education = full ? CV.education : CV.education.slice(0, 3).filter((e) => !e.cvOnly);
 const Heading = full ? 'h1' : 'h2';
 ---
 <section id="cv" class="prose-width" aria-labelledby="cv-heading">
   <Heading id="cv-heading">{full ? 'Curriculum vitae' : 'CV'}</Heading>
+  {full && <p class="cv-plain"><a href="/cv.txt">Plain-text version</a></p>}
   <h3 class="label">Experience</h3>
-  {experience.map((o) => (
+  {experience.map((e) => (
     <div class="org">
       <h4>{full
-        ? o.org
-        : o.logo
+        ? e.orgs[0].org
+        : e.orgs.map((o) => (o.logo
           ? <CvLogo logo={o.logo} name={o.org} />
-          : <><CvMark icon={o.icon} name={o.org} />{o.org}</>}</h4>
-      {o.positions.map((p) => (
+          : <><CvMark icon={o.icon} name={o.org} />{o.org}</>))}</h4>
+      {e.positions.map((p) => (
         <div class="position">
           <p class="title-line"><span class="title">{p.title}</span><span class="label dates">{p.dates}</span></p>
           {full && p.note && <p class="note">{p.note}</p>}
@@ -56,10 +69,12 @@ const Heading = full ? 'h1' : 'h2';
   section h2 { font-size: 1.7rem; }
   section h1 { font-size: 2.2rem; }
   section h3.label { margin-top: 2em; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .cv-plain { margin-top: 6px; font-size: 0.85em; color: var(--ink-muted); }
+  .cv-plain a { color: inherit; }
   .org { margin-top: 1.2em; }
   /* Org outranks the role beneath it: Newsreader reads optically smaller than the
      Palatino body text, so 1.1rem left it looking like a subheading of the role. */
-  .org h4 { font-size: 1.4rem; display: flex; align-items: center; gap: 10px; }
+  .org h4 { font-size: 1.4rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .position { margin-top: 0.4em; }
   .title-line { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
   .note { color: var(--ink-muted); font-size: 0.9rem; margin-top: 2px; }
