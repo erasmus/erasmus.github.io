@@ -19,7 +19,7 @@ const files = import.meta.glob<{ default: ImageMetadata }>('../assets/img/*.{png
           ? <Image class="portrait" src={src} alt="" width={64} height={64} densities={[1, 2]} />
           : <span class="portrait monogram" aria-hidden="true">{q.name.charAt(0)}</span>}
         <blockquote>“{q.quote}”</blockquote>
-        <figcaption class="label">{q.name}</figcaption>
+        <figcaption class="label">&#8212; {q.name}</figcaption>
       </figure>
     );
   })}
@@ -54,5 +54,4 @@ const files = import.meta.glob<{ default: ImageMetadata }>('../assets/img/*.{png
     font-family: var(--font-head); font-style: italic;
     font-size: 1.35rem; line-height: 1.45;
   }
-  figcaption { text-align: right; }
 </style>
