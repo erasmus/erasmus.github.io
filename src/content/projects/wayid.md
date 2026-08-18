@@ -13,8 +13,6 @@ order: 2
 links:
   - label: "Website: way.je"
     url: "https://way.je"
-  - label: "WaySpace (companion product)"
-    url: "https://way.space"
   - label: "Lineage Labs"
     url: "https://lineage.fyi"
   - label: "Presentation at ClawCon Copenhagen"
@@ -23,24 +21,15 @@ links:
 
 <div class="tldr">
   <p class="label">TL;DR</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua, quis nostrud
-  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  <p>WayID creates trust rails for the AI agentic age. By binding together humans with their agents, AI can roll out safely across our society.
   Live at <a href="https://way.je">way.je</a>.</p>
 </div>
 
-## The problem
+## Agents without owners
 
-AI agents are about to be everywhere. They'll recommend the sneakers you buy
-on the commute home, greet you at the hospital desk, negotiate on your behalf
-and on everyone else's. Within a few years, most of the conversations we have
-online won't be with people — they'll be with software acting *for* someone.
+Interactive AI agents are about to be ubiquitous. They'll recommend the sneakers you buy on the commute home, greet you at the hospital desk, negotiate on your behalf, cold call you in the evening. 
 
-And that's the problem: acting for **whom?** When every storefront, clinic and
-inbox speaks through an agent, there is no way to tell a legitimate assistant
-from an impostor. The interfaces look identical. The voice is equally
-confident. The one thing you actually need to know — who stands behind this
-agent — is exactly the thing the interface never shows.
+All these agents act on the behalf of somebody, the question is: on behalf of whom? Today, there is no way to tell. AI is a trillion dollar industry with a $18bn risk problem.
 
 <figure class="wi-problem bleed-wide">
 <div class="wi-problem-grid">
@@ -52,7 +41,7 @@ agent — is exactly the thing the interface never shows.
 </div>
 <figcaption>Agents in the wild: a shopping assistant that takes your card
 details, a hospital greeter that takes your trust. Nothing on either screen
-tells you who — if anyone — is behind them.</figcaption>
+tells you who is behind them — and who can be held responsible if something is off.</figcaption>
 </figure>
 
 <style>
@@ -75,22 +64,17 @@ tells you who — if anyone — is behind them.</figcaption>
   }
 </style>
 
-## How it works
+## Passports for agents
 
-WayID issues every agent a public certificate — a small, inspectable profile
-binding the agent to its verified human owner. The two artefacts below are
-the heart of the product: checking an agent from inside a conversation, and
-the certificate itself.
+WayID is the AI agent’s passport. A verifiable certificate that ties every agent back to a real, accountable human or company.
 
 <section class="wi-how bleed-wide">
   <div class="wi-dive">
     <div class="wi-dive-text">
       <p class="label">In the conversation</p>
       <h3>Verified without leaving the chat</h3>
-      <p>Anyone talking to an agent asks <code>/whoareyou</code> and gets its
-      certificate back instantly — owner, verification status, trust grade.
-      No detective work, no switching apps.</p>
-      <p class="wi-hint" aria-hidden="true">Click the chat to replay</p>
+      <p>Anyone talking to an agent can ask <code>/whoareyou</code> and gets its
+      certificate back instantly — owner, verification status, trust grade.</p>
     </div>
     <div class="wi-artifact wi-artifact-r wi-chat" data-wi-chat role="img" aria-label="Chat demo: a user asks Earl the Bot /whoareyou and receives its WayID certificate — Trust A, owned by Sebastian H., a verified human">
       <div class="wi-chat-head">
@@ -146,9 +130,7 @@ the certificate itself.
       <p class="label">The certificate</p>
       <h3>Claimed once, trusted everywhere</h3>
       <p>A WayID certificate is a public, inspectable profile for an agent —
-      its name, its owner, its verification status. Anyone the agent talks
-      to can check it in one tap, in any channel it operates on.</p>
-      <p><a href="https://way.je/agent/earl">See the live certificate&nbsp;→</a></p>
+      its name, its owner, its verification status.</p>
     </div>
     <a href="https://way.je/agent/earl" class="wi-artifact wi-artifact-l wi-profile" aria-label="Earl the Bot's live WayID certificate on way.je">
       <span class="wi-verify">
@@ -551,30 +533,6 @@ signals back from those protocols and from on-chain registries — one place
 where cryptographic proofs, protocol attestations, and human feedback add up
 to a single answer: *who is behind this agent, and can it be trusted?*
 
-## The research
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-
-> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-> consectetur, adipisci velit, sed quia non numquam eius modi tempora.
-
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
-nesciunt. Ut enim ad minima veniam, quis nostrum exercitationem ullam
-corporis suscipit laboriosam.
-
-<figure class="bleed">
-  <div class="media-placeholder" style="aspect-ratio: 21 / 9">
-    <span>Full-width research graphic</span>
-  </div>
-  <figcaption>Lorem ipsum caption dolor sit amet.</figcaption>
-</figure>
-
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
-excepturi sint occaecati cupiditate non provident, similique sunt in culpa.
 
 <figure class="bleed-wide">
   <div class="video-slot media-placeholder">
