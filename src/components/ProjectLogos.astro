@@ -1,0 +1,61 @@
+---
+// Row of partner/organisation logos shown under a project page's title. Each
+// entry is a filename in src/assets/logos; the alt text carries the org name,
+// derived from the filename when none is given.
+interface Props { logos: string[] }
+const { logos } = Astro.props;
+const files = import.meta.glob<string>('../assets/logos/*.svg', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+// Optical size corrections: wordmark-only logos read small at a uniform height,
+// while tall lockups (a symbol stacked over text) read large.
+const heights: Record<string, string> = {
+  'web3foundation.svg': '26px',
+  'polkadot.svg': '18px',
+};
+// Filenames are abbreviations; alt text should read as the org's actual name.
+const names: Record<string, string> = {
+  'SDF-logo.svg': 'Stellar Development Foundation',
+  'web3foundation.svg': 'Web3 Foundation',
+  'polkadot.svg': 'Polkadot',
+};
+const items = logos
+  .map((logo) => ({
+    logo,
+    src: files[`../assets/logos/${logo}`],
+    height: heights[logo],
+    name: names[logo] ?? logo.replace(/\.svg$/, '').replace(/[-_]/g, ' '),
+  }))
+  .filter((i) => i.src);
+---
+{items.length > 0 && (
+  <ul class="project-logos">
+    {items.map((i) => (
+      <li>
+        <img src={i.src} alt={i.name} style={i.height ? `height: ${i.height}` : undefined} />
+      </li>
+    ))}
+  </ul>
+)}
+<style>
+  .project-logos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    margin-top: 18px;
+    padding: 0;
+    list-style: none;
+  }
+  .project-logos img {
+    height: 22px;
+    width: auto;
+    max-width: 150px;
+    object-fit: contain;
+    /* Logos are supporting context, not the page's subject: mute them so they
+       sit below the title without competing with it. */
+    opacity: 0.55;
+  }
+</style>

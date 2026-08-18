@@ -8,6 +8,10 @@ summary: "A blockchain network optimised for cross-border payments — from conc
 tile: logo
 image: ../../assets/logos/Pendulum_logo.svg
 span: sm
+logos:
+  - SDF-logo.svg
+  - web3foundation.svg
+  - polkadot.svg
 featured: true
 order: 4
 ---

@@ -26,6 +26,8 @@ const projects = defineCollection({
         tile: z.enum(['image', 'logo', 'text']),
         image: image().optional(),
         span: z.enum(['sm', 'md', 'lg', 'xl']).default('sm'),
+        // Filenames in src/assets/logos, shown as a row under the page title.
+        logos: z.array(z.string()).optional(),
         links: z.array(z.object({ label: z.string(), url: z.string().url() })).optional(),
         featured: z.boolean().default(false),
         order: z.number(),
