@@ -29,17 +29,51 @@ links:
   Live at <a href="https://way.je">way.je</a>.</p>
 </div>
 
-<figure class="bleed">
+## The problem
 
-![A video call where the caller's AI agent shows a WayID QR code, next to a phone verifying the agent session as authorised](../../assets/img/wayid-screen.png)
+AI agents are about to be everywhere. They'll recommend the sneakers you buy
+on the commute home, greet you at the hospital desk, negotiate on your behalf
+and on everyone else's. Within a few years, most of the conversations we have
+online won't be with people — they'll be with software acting *for* someone.
 
+And that's the problem: acting for **whom?** When every storefront, clinic and
+inbox speaks through an agent, there is no way to tell a legitimate assistant
+from an impostor. The interfaces look identical. The voice is equally
+confident. The one thing you actually need to know — who stands behind this
+agent — is exactly the thing the interface never shows.
+
+<figure class="wi-problem bleed-wide">
+<div class="wi-problem-grid">
+
+![A commuter on the tube chatting with a shopping agent, "SoleMate AI", that is recommending sneakers on his phone](../../assets/img/wayid-still001.jpg)
+
+![An elderly couple at a hospital kiosk being greeted by an on-screen artificial agent posing as a doctor](../../assets/img/wayid-still002.jpg)
+
+</div>
+<figcaption>Agents in the wild: a shopping assistant that takes your card
+details, a hospital greeter that takes your trust. Nothing on either screen
+tells you who — if anyone — is behind them.</figcaption>
 </figure>
 
-## The brief
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+<style>
+  .wi-problem-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 640px) {
+    .wi-problem-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .wi-problem-grid p { margin: 0; }
+  .wi-problem-grid img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-block: 0;
+  }
+</style>
 
 ## How it works
 
@@ -487,6 +521,35 @@ the certificate itself.
     chat.addEventListener('click', play);
   })();
 </script>
+
+## The product
+
+WayID — short for *"Who Are You?"* — is an agent provenance certificate
+system. The easiest way to think about it is as three familiar things rolled
+into one, applied to AI agents:
+
+- **Cryptographic verification**, like SSL/TLS — the certificate proves the
+  agent is who it claims to be.
+- **Reputation**, like Trustpilot — consumers rate and review agents and
+  their operators directly on the platform, off-chain and human-readable.
+- **Discovery**, like LinkedIn — every agent gets a public, inspectable
+  profile anyone can look up.
+
+Under the hood it is built on self-sovereign identity: decentralised
+identifiers (DIDs) and verifiable credentials for both humans and agents,
+usable hosted or fully self-custodial. Agents bind to their certificate at
+one of three assurance tiers — operator-signed, device-bound, or
+TEE-attested — so the trust grade reflects how strongly the agent's keys are
+actually anchored. For verifying the *human* behind the agent, WayID
+deliberately builds nothing itself: it integrates existing proof-of-personhood
+and identity systems such as World ID, Self, and government eID schemes.
+
+The same philosophy applies across the ecosystem: WayID is a trust
+*aggregator*, not another silo. Certificates are referenceable from agent
+protocols like A2A AgentCards and ANP descriptors, and WayID ingests trust
+signals back from those protocols and from on-chain registries — one place
+where cryptographic proofs, protocol attestations, and human feedback add up
+to a single answer: *who is behind this agent, and can it be trusted?*
 
 ## The research
 
