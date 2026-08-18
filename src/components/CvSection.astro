@@ -25,7 +25,7 @@ const Heading = full ? 'h1' : 'h2';
       {o.positions.map((p) => (
         <div class="position">
           <p class="title-line"><span class="title">{p.title}</span><span class="label dates">{p.dates}</span></p>
-          {p.note && <p class="note">{p.note}</p>}
+          {full && p.note && <p class="note">{p.note}</p>}
         </div>
       ))}
     </div>
@@ -40,7 +40,7 @@ const Heading = full ? 'h1' : 'h2';
           : <><CvMark icon={e.icon} name={e.institution} />{e.institution}</>}</h4>
       <div class="position">
         <p class="title-line"><span class="title">{e.qualification}</span><span class="label dates">{e.years}</span></p>
-        {e.note && <p class="note">{e.note}</p>}
+        {full && e.note && <p class="note">{e.note}</p>}
       </div>
     </div>
   ))}
