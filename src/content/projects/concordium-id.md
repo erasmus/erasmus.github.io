@@ -5,8 +5,8 @@ org: "Concordium"
 years: "2023 – 2026"
 domain: "Digital identity"
 summary: "A self-custodial mobile app that turns Concordium's protocol-level, zero-knowledge identity layer into something ordinary people can actually use — prove a fact about yourself, reveal nothing else."
-tile: logo
-image: ../../assets/logos/Concordium Symbol_Black.svg
+tile: image
+image: ../../assets/img/concordium-id-app-front.png
 span: sm
 featured: true
 order: 3
@@ -19,11 +19,7 @@ links:
 
 <div class="tldr">
   <p class="label">TL;DR</p>
-  <p>Concordium's identity layer is cryptographically brilliant and famously
-  hard to use. We distilled it into a dedicated ID app: verify once, hold your
-  credential on your own device, and prove facts like "over 18" with
-  zero-knowledge proofs — revealing nothing else. Researched, prototyped, and
-  launched within a year; adopted by multi-chain wallets like Coin98.</p>
+  <p>Concordium's identity layer is cryptographically brilliant and also hard to use. We distilled it into a dedicated ID app: verify once, hold your credential on your own device, and prove facts like "over 18" with zero-knowledge proofs — revealing nothing else. Researched, prototyped, and launched within a year.</p>
 </div>
 
 ## Background: a blockchain with a complex identity layer
@@ -59,6 +55,37 @@ credential stored only on your device, and from there create on-chain accounts
 or answer verification requests — scan a QR code, approve a proof, done. Via
 WalletConnect, third-party and multi-chain wallets can plug into Concordium's
 identity layer without building any of it natively.
+
+<figure class="ci-shots">
+<div class="ci-shots-grid">
+
+![The Concordium ID app: a phone showing the scanner used to answer a verification request](../../assets/img/concordium-id-app.png)
+
+![The app's home screen under the promise "Your Data. Your Rules." — a UK passport credential held as a card, with anonymous age verification among the ways to use it](../../assets/img/concordium-id-app-2.png)
+
+</div>
+<figcaption>Credentials live on the device as cards you hold, not accounts you
+log into; proving something is a scan away.</figcaption>
+</figure>
+
+<style>
+  .ci-shots-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 34rem;
+    margin-inline: auto;
+  }
+  .ci-shots-grid p { margin: 0; }
+  .ci-shots-grid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    border-radius: 0.75rem;
+    margin-block: 0;
+  }
+</style>
 
 The key feature: selective disclosure. The app can prove a single fact about
 you — over 18, a citizen, not a resident of a given country — while concealing

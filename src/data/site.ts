@@ -1,8 +1,8 @@
 export const SITE = {
   name: 'Erasmus Hagen',
-  lede: 'Building digital products for humans.',
+  lede: 'Building human-first technology in the age of machines.',
   description:
-    'Product and technology in finance and digital identity. Notes on trust, technology, and transcendence.',
+    '',
   // Professional summary (3–4 sentences) used by cv.txt and llms.txt.
   // Leave empty to omit the section from those files.
   summary: '' as string,
