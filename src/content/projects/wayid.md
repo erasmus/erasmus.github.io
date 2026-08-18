@@ -541,22 +541,3 @@ to a single answer: *who is behind this agent, and can it be trusted?*
   </div>
   <figcaption>Demo of an agent being claimed on Telegram.</figcaption>
 </figure>
-
-## What happened
-
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda
-est, omnis dolor repellendus.
-
-<figure>
-  <div class="media-placeholder" style="aspect-ratio: 3 / 2">
-    <span>Inline figure</span>
-  </div>
-  <figcaption>Lorem ipsum inline caption.</figcaption>
-</figure>
-
-## Looking back
-
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus asperiores
-repellat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
