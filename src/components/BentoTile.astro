@@ -21,8 +21,11 @@ const { title, tile, image, span, domain, years, summary } = project.data;
   </div>
 </a>
 <style>
-  .tile { display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--rule); background: var(--tile); transition: background-color 150ms ease-out, border-color 150ms ease-out, transform 200ms ease-out, box-shadow 200ms ease-out; overflow: hidden; }
-  .tile:hover { background: rgba(31, 30, 29, 0.08); border-color: var(--ink); transform: translateY(-3px); box-shadow: 0 12px 24px -14px rgba(31, 30, 29, 0.35); }
+  /* Hover leaves the tile's own box alone: its hairline border sits on a
+     fractional pixel, so lifting or darkening it shimmered as it repainted.
+     The tint, the image zoom and the summary carry the hover state instead. */
+  .tile { display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--rule); background: var(--tile); transition: background-color 150ms ease-out; overflow: hidden; }
+  .tile:hover { background: rgba(31, 30, 29, 0.08); }
   .tile :global(img) { width: 100%; object-fit: cover; flex: 1; min-height: 0; }
   .tile-image :global(img) { transition: transform 400ms ease-out; }
   .tile-image:hover :global(img) { transform: scale(1.04); }
@@ -36,9 +39,7 @@ const { title, tile, image, span, domain, years, summary } = project.data;
      shifts. The panel is opaque to hide the image behind it. Touch devices and
      narrow layouts keep the summary inline, since they have no hover state. */
   @media (hover: hover) and (min-width: 900px) {
-    /* will-change keeps the tile on its own layer, so the hover lift composites
-       instead of repainting the border against the panel edge each frame. */
-    .tile { position: relative; will-change: transform; }
+    .tile { position: relative; }
     /* Opaque so the image cannot show through, and tinted in step with the
        tile's own hover background so the bottom of the tile never flashes. */
     .tile-text { position: absolute; left: 0; right: 0; bottom: 0; background-color: color-mix(in srgb, var(--ink) 4%, var(--paper)); transition: background-color 150ms ease-out; }
