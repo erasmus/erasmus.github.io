@@ -5,8 +5,8 @@
   --rule: rgba(31, 30, 29, 0.15);
   --tile: rgba(31, 30, 29, 0.04);
   --link-hover: rgb(55, 54, 54);
-  --font-serif: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-  --font-head: "Newsreader Variable", Newsreader, "Times New Roman", serif;
+  --font-serif: ui-serif, "Iowan Old Style", "Apple Garamond", Baskerville, "Sitka Text", Cambria, "Times New Roman", "Droid Serif", "Noto Serif", "Liberation Serif", Times, "Source Serif Pro", serif;
+  --font-head: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   --font-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: Menlo, Consolas, "Roboto Mono", "Liberation Mono", monospace;
 }
