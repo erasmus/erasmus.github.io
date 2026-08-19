@@ -7,6 +7,7 @@ domain: "Blockchain"
 summary: "A blockchain network optimised for cross-border payments — from concept to the fastest parachain auction in Polkadot's history, launching on Polkadot Mainnet in February 2023."
 tile: logo
 image: ../../assets/logos/Pendulum_logo.svg
+logoSwing: true
 span: sm
 logos:
   - SDF-logo.svg

@@ -3,14 +3,14 @@ import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 interface Props { project: CollectionEntry<'projects'> }
 const { project } = Astro.props;
-const { title, tile, image, span, domain, years, summary } = project.data;
+const { title, tile, image, span, domain, years, summary, logoSwing } = project.data;
 ---
 <a href={`/projects/${project.id}/`} class={`tile tile-${tile} span-${span}`}>
   {tile === 'image' && image && (
     <Image src={image} alt="" widths={[400, 800, 1200]} sizes="(max-width: 600px) 100vw, 50vw" />
   )}
   {tile === 'logo' && image && (
-    <div class="logo-panel"><Image src={image} alt="" width={120} height={120} /></div>
+    <div class="logo-panel"><Image src={image} alt="" width={120} height={120} class={logoSwing ? 'swing' : undefined} /></div>
   )}
   <div class="tile-text">
     <h3>{title}</h3>
@@ -30,6 +30,35 @@ const { title, tile, image, span, domain, years, summary } = project.data;
   .tile-image :global(img) { transition: transform 400ms ease-out; }
   .tile-image:hover :global(img) { transform: scale(1.04); }
   .logo-panel { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  /* Pendulum's own site swings its mark on load: three sweeps between rest and
+     -45deg, easing hard at each end so it reads as a weight on a string. Here
+     it hangs off hover (and keyboard focus) instead, since the tile can sit
+     below the fold. The pivot is the centre of the mark's head, in the square
+     SVG's own coordinates (1027/2000 across, 848/2000 down). The square box
+     keeps those percentages pointing at the same spot whatever width the panel
+     takes; it renders at the same size the img already had. */
+  .logo-panel :global(img.swing) {
+    flex: none;
+    height: auto;
+    aspect-ratio: 1;
+    transform-origin: 51.3% 42.4%;
+  }
+  /* The CSS version is the no-JS fallback: it snaps back to rest if the
+     pointer leaves mid-swing. The script below marks the logo .swing-js and
+     drives the same motion through the Web Animations API instead, so it can
+     ease down from wherever the swing happens to be. */
+  .tile:hover .logo-panel :global(img.swing:not(.swing-js)),
+  .tile:focus-visible .logo-panel :global(img.swing:not(.swing-js)) {
+    animation: logo-swing 6s cubic-bezier(0.86, 0, 0.07, 1) 1;
+  }
+  @keyframes logo-swing {
+    0%, 33.333%, 66.667%, 100% { transform: rotate(0deg); }
+    16.667%, 50%, 83.333% { transform: rotate(-45deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tile:hover .logo-panel :global(img.swing:not(.swing-js)),
+    .tile:focus-visible .logo-panel :global(img.swing:not(.swing-js)) { animation: none; }
+  }
   .tile-text { padding: 14px 16px 16px; }
   .tile-text h3 { font-size: 1.15rem; }
   .tile-text .summary { font-size: 0.85rem; color: var(--ink-muted); margin-top: 4px; }
@@ -74,3 +103,57 @@ const { title, tile, image, span, domain, years, summary } = project.data;
     .span-lg, .span-xl { grid-column: span 2; }
   }
 </style>
+
+<script>
+  // Hover swing, taken over from CSS so an interrupted swing can be eased back
+  // to rest instead of snapping. Same shape as Pendulum's own animation: three
+  // sweeps between rest and -45deg over 6s, hard easing at each end.
+  const EASE = 'cubic-bezier(0.86, 0, 0.07, 1)';
+  const SWEEPS = [-45, 0, -45, 0, -45, 0];
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+
+  // Where the mark currently sits, so a settle can pick up from mid-swing.
+  function currentAngle(el: Element) {
+    const t = getComputedStyle(el).transform;
+    if (!t || t === 'none') return 0;
+    const m = new DOMMatrixReadOnly(t);
+    return (Math.atan2(m.b, m.a) * 180) / Math.PI;
+  }
+
+  document.querySelectorAll<HTMLElement>('.tile .logo-panel img.swing').forEach((mark) => {
+    const tile = mark.closest('.tile');
+    if (!tile || typeof mark.animate !== 'function') return;
+    mark.classList.add('swing-js');
+    let anim: Animation | null = null;
+
+    function swing() {
+      if (reduced.matches) return;
+      // Re-entering mid-settle picks up from the angle already on screen.
+      const from = anim ? currentAngle(mark) : 0;
+      anim?.cancel();
+      anim = mark.animate(
+        [from, ...SWEEPS].map((deg) => ({ transform: `rotate(${deg}deg)`, easing: EASE })),
+        { duration: 6000 },
+      );
+    }
+
+    function settle() {
+      if (!anim) return;
+      const from = currentAngle(mark);
+      anim.cancel();
+      anim = null;
+      if (Math.abs(from) < 0.5) return;
+      // Short ease-out, in proportion to how far the mark still has to fall.
+      anim = mark.animate(
+        [{ transform: `rotate(${from}deg)` }, { transform: 'rotate(0deg)' }],
+        { duration: Math.round(140 + (Math.abs(from) / 45) * 360), easing: 'ease-out' },
+      );
+      anim.addEventListener('finish', () => { anim = null; });
+    }
+
+    tile.addEventListener('pointerenter', swing);
+    tile.addEventListener('pointerleave', settle);
+    tile.addEventListener('focus', () => { if (tile.matches(':focus-visible')) swing(); });
+    tile.addEventListener('blur', settle);
+  });
+</script>
