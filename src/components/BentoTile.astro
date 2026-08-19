@@ -30,15 +30,22 @@ const { title, tile, image, span, domain, years, summary } = project.data;
   .tile-text { padding: 14px 16px 16px; }
   .tile-text h3 { font-size: 1.15rem; }
   .tile-text .summary { font-size: 0.85rem; color: var(--ink-muted); margin-top: 4px; }
-  /* Summaries stay collapsed so the grid reads as images and titles; hovering a
-     tile (or keyboard-focusing it) rolls the detail open. Touch devices keep it
-     visible since they have no hover state. */
-  @media (hover: hover) {
+  /* Summaries are hidden so the grid reads as images and titles. On hover (or
+     keyboard focus) the text block lifts up over the image to make room for the
+     summary, so the tile's own height never changes and nothing on the page
+     shifts. The panel is opaque to hide the image behind it. Touch devices and
+     narrow layouts keep the summary inline, since they have no hover state. */
+  @media (hover: hover) and (min-width: 900px) {
+    .tile { position: relative; }
+    .tile-text { position: absolute; left: 0; right: 0; bottom: 0; background: linear-gradient(var(--tile), var(--tile)), var(--paper); }
+    .tile:hover .tile-text { background: linear-gradient(rgba(31, 30, 29, 0.08), rgba(31, 30, 29, 0.08)), var(--paper); }
+    /* Keep logos optically centred in the space left above the text panel. */
+    .logo-panel { padding-bottom: 88px; }
     .summary-wrap { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 250ms ease-out, opacity 200ms ease-out; }
     .summary-wrap > .summary { overflow: hidden; margin-top: 0; padding-top: 4px; }
     .tile:hover .summary-wrap, .tile:focus-visible .summary-wrap { grid-template-rows: 1fr; opacity: 1; }
   }
-  @media (hover: hover) and (prefers-reduced-motion: reduce) {
+  @media (hover: hover) and (min-width: 900px) and (prefers-reduced-motion: reduce) {
     .summary-wrap { transition: none; }
   }
   .span-lg .tile-text h3 { font-size: 1.5rem; }
@@ -54,6 +61,8 @@ const { title, tile, image, span, domain, years, summary } = project.data;
     .span-xl .tile-text .summary { font-size: 0.95rem; margin-top: 8px; max-width: 42em; }
   }
   @media (hover: hover) and (min-width: 900px) {
+    .span-xl .tile-text { position: static; background: none; }
+    .span-xl .logo-panel { padding-bottom: 24px; }
     .span-xl .summary-wrap > .summary { padding-top: 8px; }
   }
   @media (min-width: 600px) and (max-width: 899.98px) {
