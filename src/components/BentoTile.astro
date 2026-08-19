@@ -15,7 +15,9 @@ const { title, tile, image, span, domain, years, summary } = project.data;
   <div class="tile-text">
     <h3>{title}</h3>
     <p class="label">{domain} · {years}</p>
-    {span !== 'sm' && <p class="summary">{summary}</p>}
+    {span !== 'sm' && (
+      <div class="summary-wrap"><p class="summary">{summary}</p></div>
+    )}
   </div>
 </a>
 <style>
@@ -28,6 +30,17 @@ const { title, tile, image, span, domain, years, summary } = project.data;
   .tile-text { padding: 14px 16px 16px; }
   .tile-text h3 { font-size: 1.15rem; }
   .tile-text .summary { font-size: 0.85rem; color: var(--ink-muted); margin-top: 4px; }
+  /* Summaries stay collapsed so the grid reads as images and titles; hovering a
+     tile (or keyboard-focusing it) rolls the detail open. Touch devices keep it
+     visible since they have no hover state. */
+  @media (hover: hover) {
+    .summary-wrap { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 250ms ease-out, opacity 200ms ease-out; }
+    .summary-wrap > .summary { overflow: hidden; margin-top: 0; padding-top: 4px; }
+    .tile:hover .summary-wrap, .tile:focus-visible .summary-wrap { grid-template-rows: 1fr; opacity: 1; }
+  }
+  @media (hover: hover) and (prefers-reduced-motion: reduce) {
+    .summary-wrap { transition: none; }
+  }
   .span-lg .tile-text h3 { font-size: 1.5rem; }
   @media (min-width: 900px) {
     .span-md { grid-column: span 2; }
@@ -39,6 +52,9 @@ const { title, tile, image, span, domain, years, summary } = project.data;
     .span-xl .tile-text { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 24px 32px; }
     .span-xl .tile-text h3 { font-size: 1.5rem; }
     .span-xl .tile-text .summary { font-size: 0.95rem; margin-top: 8px; max-width: 42em; }
+  }
+  @media (hover: hover) and (min-width: 900px) {
+    .span-xl .summary-wrap > .summary { padding-top: 8px; }
   }
   @media (min-width: 600px) and (max-width: 899.98px) {
     .span-lg, .span-xl { grid-column: span 2; }
