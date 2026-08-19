@@ -5,7 +5,7 @@ import Prose from '../../layouts/Prose.astro';
 import ProjectLogos from '../../components/ProjectLogos.astro';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
   return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
 }
 
