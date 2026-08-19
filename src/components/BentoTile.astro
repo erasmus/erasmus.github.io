@@ -36,9 +36,13 @@ const { title, tile, image, span, domain, years, summary } = project.data;
      shifts. The panel is opaque to hide the image behind it. Touch devices and
      narrow layouts keep the summary inline, since they have no hover state. */
   @media (hover: hover) and (min-width: 900px) {
-    .tile { position: relative; }
-    .tile-text { position: absolute; left: 0; right: 0; bottom: 0; background: linear-gradient(var(--tile), var(--tile)), var(--paper); }
-    .tile:hover .tile-text { background: linear-gradient(rgba(31, 30, 29, 0.08), rgba(31, 30, 29, 0.08)), var(--paper); }
+    /* will-change keeps the tile on its own layer, so the hover lift composites
+       instead of repainting the border against the panel edge each frame. */
+    .tile { position: relative; will-change: transform; }
+    /* Opaque so the image cannot show through, and tinted in step with the
+       tile's own hover background so the bottom of the tile never flashes. */
+    .tile-text { position: absolute; left: 0; right: 0; bottom: 0; background-color: color-mix(in srgb, var(--ink) 4%, var(--paper)); transition: background-color 150ms ease-out; }
+    .tile:hover .tile-text { background-color: color-mix(in srgb, var(--ink) 8%, var(--paper)); }
     /* Keep logos optically centred in the space left above the text panel. */
     .logo-panel { padding-bottom: 88px; }
     .summary-wrap { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 250ms ease-out, opacity 200ms ease-out; }
