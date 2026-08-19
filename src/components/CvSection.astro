@@ -21,7 +21,7 @@ const experience = full
         return o === mergeSlot ? [{ orgs: merged, positions: merged[0].positions.slice(0, 1) }] : [];
       })
       .slice(0, 3);
-const education = full ? CV.education : CV.education.slice(0, 3).filter((e) => !e.cvOnly);
+const education = full ? CV.education : CV.education.slice(0, 3);
 const Heading = full ? 'h1' : 'h2';
 ---
 <section id="cv" class="prose-width" aria-labelledby="cv-heading">
@@ -44,6 +44,7 @@ const Heading = full ? 'h1' : 'h2';
     </div>
   ))}
   <h3 class="label">Education</h3>
+  <div class={full ? undefined : 'edu-row'}>
   {education.map((e) => (
     <div class="org">
       <h4>{full
@@ -51,12 +52,15 @@ const Heading = full ? 'h1' : 'h2';
         : e.logo
           ? <CvLogo logo={e.logo} name={e.institution} />
           : <><CvMark icon={e.icon} name={e.institution} />{e.institution}</>}</h4>
-      <div class="position">
-        <p class="title-line"><span class="title">{e.qualification}</span><span class="label dates">{e.years}</span></p>
-        {full && e.note && <p class="note">{e.note}</p>}
-      </div>
+      {full && (
+        <div class="position">
+          <p class="title-line"><span class="title">{e.qualification}</span><span class="label dates">{e.years}</span></p>
+          {e.note && <p class="note">{e.note}</p>}
+        </div>
+      )}
     </div>
   ))}
+  </div>
   {full && (
     <>
       <h3 class="label">Languages</h3>
@@ -72,6 +76,15 @@ const Heading = full ? 'h1' : 'h2';
   .cv-plain { margin-top: 6px; font-size: 0.85em; color: var(--ink-muted); }
   .cv-plain a { color: inherit; }
   .org { margin-top: 1.2em; }
+  /* Home page: the education entries are bare wordmarks, so they sit on one line
+     instead of each claiming a stacked block of their own. The three marks total
+     ~295px at full size, which overflows the prose column on phones, so they shrink
+     together rather than wrapping one mark onto a lonely second row. */
+  .edu-row { display: flex; align-items: center; gap: 28px; }
+  .edu-row .org { margin-top: 1.2em; }
+  @media (max-width: 599.98px) {
+    .edu-row { --logo-scale: 0.78; gap: clamp(12px, 5vw, 20px); }
+  }
   /* Org outranks the role beneath it: Newsreader reads optically smaller than the
      Palatino body text, so 1.1rem left it looking like a subheading of the role. */
   .org h4 { font-size: 1.4rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }

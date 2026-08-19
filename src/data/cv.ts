@@ -4,8 +4,7 @@ export interface Position { title: string; dates: string; note?: string }
 // the org name entirely. Omit it (e.g. while a logo is outstanding) to fall back to
 // the icon/monogram plus the name in text.
 export interface Org { org: string; positions: Position[]; icon?: string; logo?: string }
-// `cvOnly` keeps an entry off the home-page summary while leaving it on /cv/.
-export interface Edu { institution: string; qualification: string; years: string; note?: string; icon?: string; logo?: string; cvOnly?: boolean }
+export interface Edu { institution: string; qualification: string; years: string; note?: string; icon?: string; logo?: string }
 
 // SatoshiPay and Pendulum are one organisation under two brands. The home page folds
 // them into a single entry carrying both wordmarks, in this order, and takes the role
@@ -31,7 +30,7 @@ export const CV: Cv = {
   ],
   education: [
     { institution: 'University of Oxford', icon: 'University_of_Oxford.svg', logo: 'University_of_Oxford_full.svg', qualification: 'MSc, Social Science of the Internet', years: '2011–2012', note: 'Multidisciplinary study of the societal, economic, and political impact of the Internet at the Oxford Internet Institute.' },
-    { institution: 'Goldsmiths College, University of London', icon: 'Goldsmith_University-logo.svg', logo: 'Goldsmith_University-logo_full.svg', cvOnly: true, qualification: 'BA, Media & Communications', years: '2008–2011', note: 'Combined critical media and communication theory with hands-on practice in interactive media.' },
+    { institution: 'Goldsmiths College, University of London', icon: 'Goldsmith_University-logo.svg', logo: 'Goldsmith_University-logo_full.svg', qualification: 'BA, Media & Communications', years: '2008–2011', note: 'Combined critical media and communication theory with hands-on practice in interactive media.' },
     { institution: 'London School of Economics', icon: 'LSE_Logo.svg', logo: 'London_school_of_economics_logo_full.svg', qualification: 'Diploma, Managerial Accounting and Financial Control', years: '2010', note: 'Intensive programme in management accounting, budgeting, and financial control.' },
     { institution: 'Birkbeck, University of London', qualification: 'Diploma, Media Studies / Journalism', years: '2006–2007', note: 'Foundation in media studies and practical journalism.' },
   ],
