@@ -1,5 +1,5 @@
 ---
-title: "WayID"
+title: "Digital passports for agents"
 role: "Co-Founder"
 org: "Lineage Labs"
 years: "2026 – present"

@@ -1,5 +1,5 @@
 ---
-title: "Launching a Parachain"
+title: "Launching a blockchain"
 role: "Head of Product"
 org: "Pendulum"
 years: "2021 – 2023"

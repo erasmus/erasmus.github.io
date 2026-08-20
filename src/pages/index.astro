@@ -11,8 +11,7 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 ---
 <Base title={SITE.name} description={SITE.description}>
   <section class="hero prose-width">
-    <p class="lede">{SITE.lede} {SITE.description}</p>
-    <p class="label">{SITE.location}</p>
+    <h1 class="lede">{SITE.lede} {SITE.description}</h1>
   </section>
 
   <section id="projects" class="projects" aria-labelledby="projects-heading">
@@ -40,7 +39,7 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 </Base>
 <style>
   .hero { margin-block: 48px 56px; text-align: center; }
-  .hero h1 { font-size: 2.6rem; }
+  .hero h1 { font-size: 2.4rem; font-weight: 400; }
   .hero .lede { max-width: 34em; margin: 12px auto 8px; }
   .projects { margin-block: 32px 64px; }
   .projects h2 { display: block; margin-bottom: 12px; }

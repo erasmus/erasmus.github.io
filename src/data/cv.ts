@@ -34,5 +34,5 @@ export const CV: Cv = {
     { institution: 'London School of Economics', icon: 'LSE_Logo.svg', logo: 'London_school_of_economics_logo_full.svg', qualification: 'Diploma, Managerial Accounting and Financial Control', years: '2010', note: 'Intensive programme in management accounting, budgeting, and financial control.' },
     { institution: 'Birkbeck, University of London', qualification: 'Diploma, Media Studies / Journalism', years: '2006–2007', note: 'Foundation in media studies and practical journalism.' },
   ],
-  languages: ['Danish (native)', 'English (native/bilingual)', 'German (professional)', 'Spanish (elementary)'],
+  languages: ['Danish (native)', 'English (bilingual)', 'German (professional)', 'Portuguese (elementary)'],
 };
