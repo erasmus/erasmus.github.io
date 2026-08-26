@@ -4,7 +4,12 @@ import CvSection from '../../components/CvSection.astro';
 import CreditsSection from '../../components/CreditsSection.astro';
 import { SITE } from '../../data/site';
 ---
-<Base title={`CV — ${SITE.name}`} description={`Full curriculum vitae of ${SITE.name}: experience, education, and languages.`}>
+<Base
+  title={`CV — ${SITE.name}`}
+  description={`Full curriculum vitae of ${SITE.name}: experience, education, and languages.`}
+  ogImage="/og/cv.png"
+  ogImageAlt={`${SITE.name} — curriculum vitae`}
+>
   <CvSection full />
   <CreditsSection />
 </Base>
