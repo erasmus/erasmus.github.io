@@ -2,6 +2,9 @@
 import { CV, HOME_MERGED_ORGS } from '../data/cv';
 import CvMark from './CvMark.astro';
 import CvLogo from './CvLogo.astro';
+import { Image } from 'astro:assets';
+import portrait from '../assets/img/erasmus-hagen.jpeg';
+import { SITE } from '../data/site';
 interface Props { full?: boolean }
 const { full = false } = Astro.props;
 // The home page shows only the three most recent entries, one role per organisation,
@@ -25,8 +28,15 @@ const education = full ? CV.education : CV.education.slice(0, 3);
 const Heading = full ? 'h1' : 'h2';
 ---
 <section id="cv" class="prose-width" aria-labelledby="cv-heading">
-  <Heading id="cv-heading">{full ? 'Curriculum vitae' : 'CV'}</Heading>
-  {full && <p class="cv-plain"><a href="/cv.txt">Plain-text version</a></p>}
+  {full ? (
+    <div class="cv-head">
+      <Image class="portrait" src={portrait} alt={SITE.name} width={104} height={104} densities={[1, 2]} />
+      <div>
+        <Heading id="cv-heading">Curriculum vitae</Heading>
+        <p class="cv-plain"><a href="/cv.txt">Plain-text version</a></p>
+      </div>
+    </div>
+  ) : <Heading id="cv-heading">CV</Heading>}
   <h3 class="label">Experience</h3>
   {experience.map((e) => (
     <div class="org">
@@ -73,6 +83,19 @@ const Heading = full ? 'h1' : 'h2';
   section h2 { font-size: 1.7rem; }
   section h1 { font-size: 2.2rem; }
   section h3.label { margin-top: 2em; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  /* Portrait beside the title on /cv/, matching the circular treatment the
+     colleague quotes use. It drops above the title on narrow screens so neither
+     the heading nor the picture has to shrink. */
+  .cv-head { display: flex; align-items: center; gap: 22px; }
+  .cv-head h1 { margin: 0; }
+  .portrait {
+    width: 104px; height: 104px; border-radius: 50%; object-fit: cover;
+    border: 1px solid var(--rule); flex: none;
+  }
+  @media (max-width: 599.98px) {
+    .cv-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .portrait { width: 84px; height: 84px; }
+  }
   .cv-plain { margin-top: 6px; font-size: 0.85em; color: var(--ink-muted); }
   .cv-plain a { color: inherit; }
   .org { margin-top: 1.2em; }
