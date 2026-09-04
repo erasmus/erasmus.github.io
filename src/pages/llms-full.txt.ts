@@ -4,6 +4,7 @@ import { CV } from '../data/cv';
 import {
   publishableBody,
   absolutize,
+  experienceMarkdown,
   isoDate,
   postUrl,
   projectUrl,
@@ -52,11 +53,7 @@ export async function GET(context: APIContext) {
     '',
   ];
 
-  for (const org of CV.experience) {
-    for (const p of org.positions) {
-      lines.push(`- ${p.title}, ${org.org} (${p.dates})${p.note ? ` — ${p.note}` : ''}`);
-    }
-  }
+  lines.push(...experienceMarkdown());
 
   lines.push('', '### Education', '');
   for (const e of CV.education) {

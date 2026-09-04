@@ -2,6 +2,7 @@ import type { APIContext } from 'astro';
 import { SITE } from '../data/site';
 import { CV } from '../data/cv';
 import {
+  experienceMarkdown,
   isoDate,
   postUrl,
   projectUrl,
@@ -12,7 +13,8 @@ import {
 } from '../lib/txt';
 
 // Curated index following the llms.txt convention (https://llmstxt.org/):
-// a short map of the site for agents. The complete content lives in
+// a short map of the site for agents, plus the CV's experience section so a
+// single fetch answers who this is. The complete content lives in
 // /llms-full.txt, and a plain-text CV in /cv.txt.
 export async function GET(context: APIContext) {
   const site = siteUrl(context.site);
@@ -39,9 +41,13 @@ export async function GET(context: APIContext) {
     '## Docs',
     '',
     `- [Full site content](${site}/llms-full.txt): profile, CV, projects, and complete essay texts in one document`,
-    `- [CV](${site}/cv.txt): plain-text curriculum vitae`,
+    `- [CV](${site}/cv.txt): plain-text curriculum vitae with education and languages`,
     `- [RSS feed](${site}/feed.xml): essay feed`,
     `- [Sitemap](${site}/sitemap-index.xml)`,
+    '',
+    '## Experience',
+    '',
+    ...experienceMarkdown(),
     '',
     '## Projects',
     '',
