@@ -1,61 +1,79 @@
 ---
-title: "WayID"
+title: "Digital passports for agents"
 role: "Co-Founder"
 org: "Lineage Labs"
 domain: "Digital identity"
 summary: "Provenance certificates for AI agents — WayID binds each agent's cryptographic identity to a verified human that anyone can check in one lookup."
 tile: image
-image: ../../assets/img/wayid.jpg
+image: ../../assets/img/wayid-screen-frontpage.png
 span: md
 featured: true
 order: 2
 links:
-  - label: "way.je"
+  - label: "Website: way.je"
     url: "https://way.je"
-  - label: "WaySpace (companion product)"
-    url: "https://way.space"
   - label: "Lineage Labs"
     url: "https://lineage.fyi"
-  - label: "GitHub"
-    url: "https://github.com/LineageLabs"
+  - label: "Presentation at ClawCon Copenhagen"
+    url: "https://www.youtube.com/watch?v=B2g6qJJokXQ&t=6413s"
 ---
 
 <div class="tldr">
   <p class="label">TL;DR</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua, quis nostrud
-  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  <p>WayID creates trust rails for the AI agentic age. By binding together humans with their agents, AI can roll out safely across our society.
   Live at <a href="https://way.je">way.je</a>.</p>
 </div>
 
-<figure class="bleed-wide">
+## Agents without owners
 
-![A video call where the caller's AI agent shows a WayID QR code, next to a phone verifying the agent session as authorised](../../assets/img/wayid.jpg)
+Interactive AI agents are about to be ubiquitous. They'll recommend the sneakers you buy on the commute home, greet you at the hospital desk, negotiate on your behalf, cold call you in the evening. 
 
+All these agents act on the behalf of somebody, the question is: on behalf of whom? Today, there is no way to tell. AI is a trillion dollar industry with a $18bn risk problem.
+
+<figure class="wi-problem bleed-wide">
+<div class="wi-problem-grid">
+
+![A commuter on the tube chatting with a shopping agent, "SoleMate AI", that is recommending sneakers on his phone](../../assets/img/wayid-still001.jpg)
+
+![An elderly couple at a hospital kiosk being greeted by an on-screen artificial agent posing as a doctor](../../assets/img/wayid-still002.jpg)
+
+</div>
+<figcaption>Agents in the wild: a shopping assistant that takes your card
+details, a hospital greeter that takes your trust. Nothing on either screen
+tells you who is behind them — and who can be held responsible if something is off.</figcaption>
 </figure>
 
-## The brief
+<style>
+  .wi-problem-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 640px) {
+    .wi-problem-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .wi-problem-grid p { margin: 0; }
+  .wi-problem-grid img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-block: 0;
+  }
+</style>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+## Passports for agents
 
-## How it works
-
-WayID issues every agent a public certificate — a small, inspectable profile
-binding the agent to its verified human owner. The two artefacts below are
-the heart of the product: checking an agent from inside a conversation, and
-the certificate itself.
+WayID is the AI agent’s passport. A verifiable certificate that ties every agent back to a real, accountable human or company.
 
 <section class="wi-how bleed-wide">
   <div class="wi-dive">
     <div class="wi-dive-text">
       <p class="label">In the conversation</p>
       <h3>Verified without leaving the chat</h3>
-      <p>Anyone talking to an agent asks <code>/whoareyou</code> and gets its
-      certificate back instantly — owner, verification status, trust grade.
-      No detective work, no switching apps.</p>
-      <p class="wi-hint" aria-hidden="true">Click the chat to replay</p>
+      <p>Anyone talking to an agent can ask <code>/whoareyou</code> and gets its
+      certificate back instantly — owner, verification status, trust grade.</p>
     </div>
     <div class="wi-artifact wi-artifact-r wi-chat" data-wi-chat role="img" aria-label="Chat demo: a user asks Earl the Bot /whoareyou and receives its WayID certificate — Trust A, owned by Sebastian H., a verified human">
       <div class="wi-chat-head">
@@ -111,9 +129,7 @@ the certificate itself.
       <p class="label">The certificate</p>
       <h3>Claimed once, trusted everywhere</h3>
       <p>A WayID certificate is a public, inspectable profile for an agent —
-      its name, its owner, its verification status. Anyone the agent talks
-      to can check it in one tap, in any channel it operates on.</p>
-      <p><a href="https://way.je/agent/earl">See the live certificate&nbsp;→</a></p>
+      its name, its owner, its verification status.</p>
     </div>
     <a href="https://way.je/agent/earl" class="wi-artifact wi-artifact-l wi-profile" aria-label="Earl the Bot's live WayID certificate on way.je">
       <span class="wi-verify">
@@ -487,53 +503,40 @@ the certificate itself.
   })();
 </script>
 
-## The research
+## The product
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+WayID — short for *"Who Are You?"* — is an agent provenance certificate
+system. The easiest way to think about it is as three familiar things rolled
+into one, applied to AI agents:
 
-> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-> consectetur, adipisci velit, sed quia non numquam eius modi tempora.
+- **Cryptographic verification**, like SSL/TLS — the certificate proves the
+  agent is who it claims to be.
+- **Reputation**, like Trustpilot — consumers rate and review agents and
+  their operators directly on the platform, off-chain and human-readable.
+- **Discovery**, like LinkedIn — every agent gets a public, inspectable
+  profile anyone can look up.
 
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
-nesciunt. Ut enim ad minima veniam, quis nostrum exercitationem ullam
-corporis suscipit laboriosam.
+Under the hood it is built on self-sovereign identity: decentralised
+identifiers (DIDs) and verifiable credentials for both humans and agents,
+usable hosted or fully self-custodial. Agents bind to their certificate at
+one of three assurance tiers — operator-signed, device-bound, or
+TEE-attested — so the trust grade reflects how strongly the agent's keys are
+actually anchored. For verifying the *human* behind the agent, WayID
+deliberately builds nothing itself: it integrates existing proof-of-personhood
+and identity systems such as World ID, Self, and government eID schemes.
 
-<figure class="bleed">
-  <div class="media-placeholder" style="aspect-ratio: 21 / 9">
-    <span>Full-width research graphic</span>
-  </div>
-  <figcaption>Lorem ipsum caption dolor sit amet.</figcaption>
-</figure>
+The same philosophy applies across the ecosystem: WayID is a trust
+*aggregator*, not another silo. Certificates are referenceable from agent
+protocols like A2A AgentCards and ANP descriptors, and WayID ingests trust
+signals back from those protocols and from on-chain registries — one place
+where cryptographic proofs, protocol attestations, and human feedback add up
+to a single answer: *who is behind this agent, and can it be trusted?*
 
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
-excepturi sint occaecati cupiditate non provident, similique sunt in culpa.
 
 <figure class="bleed-wide">
   <div class="video-slot media-placeholder">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/XiLL9DQwJQg?si=UtQoQT_L8bXkmvU2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <span>Video embed — swap for YouTube iframe</span>
   </div>
-  <figcaption>Lorem ipsum video caption.</figcaption>
+  <figcaption>Demo of an agent being claimed on Telegram.</figcaption>
 </figure>
-
-## What happened
-
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda
-est, omnis dolor repellendus.
-
-<figure>
-  <div class="media-placeholder" style="aspect-ratio: 3 / 2">
-    <span>Inline figure</span>
-  </div>
-  <figcaption>Lorem ipsum inline caption.</figcaption>
-</figure>
-
-## Looking back
-
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus asperiores
-repellat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.

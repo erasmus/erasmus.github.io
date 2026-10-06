@@ -1,9 +1,11 @@
 import type { APIContext } from 'astro';
 import { SITE } from '../data/site';
 import { CV } from '../data/cv';
+import { LIBRARY } from '../data/library';
 import {
   publishableBody,
   absolutize,
+  experienceMarkdown,
   isoDate,
   postUrl,
   projectUrl,
@@ -52,11 +54,7 @@ export async function GET(context: APIContext) {
     '',
   ];
 
-  for (const org of CV.experience) {
-    for (const p of org.positions) {
-      lines.push(`- ${p.title}, ${org.org} (${p.dates})${p.note ? ` — ${p.note}` : ''}`);
-    }
-  }
+  lines.push(...experienceMarkdown());
 
   lines.push('', '### Education', '');
   for (const e of CV.education) {
@@ -105,6 +103,15 @@ export async function GET(context: APIContext) {
       absolutize(publishableBody(post.body), site),
       '',
     );
+  }
+
+  lines.push('## Library', '', `Bookmarked resources, also at ${site}/library/`, '');
+  for (const shelf of LIBRARY) {
+    lines.push(`### ${shelf.title}`, '');
+    for (const b of shelf.items) {
+      lines.push(`- [${b.title}](${b.url})${b.by ? ` by ${b.by}` : ''}: ${b.note}`);
+    }
+    lines.push('');
   }
 
   return textResponse(lines);

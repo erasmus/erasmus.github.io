@@ -29,11 +29,16 @@ const projects = defineCollection({
         tile: z.enum(['image', 'logo', 'text']),
         image: image().optional(),
         span: z.enum(['sm', 'md', 'lg', 'xl']).default('sm'),
+        // Swings the tile logo like a pendulum shortly after the page loads.
+        // Only meaningful for a mark whose pivot matches the one in BentoTile.
+        logoSwing: z.boolean().default(false),
+        // Filenames in src/assets/logos, shown as a row under the page title.
+        logos: z.array(z.string()).optional(),
         links: z.array(z.object({ label: z.string(), url: z.string().url() })).optional(),
         featured: z.boolean().default(false),
         order: z.number(),
-        // Drafts still render on the site (useful while designing) but are
-        // excluded from the machine-readable exports (llms.txt, cv.txt).
+        // Drafts are hidden everywhere: the bento grid, their own page, and
+        // the machine-readable exports (llms.txt, cv.txt).
         draft: z.boolean().default(false),
       })
       .superRefine((val, ctx) => {

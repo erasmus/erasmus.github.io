@@ -17,7 +17,12 @@ const dateFmt = post.data.date.toLocaleDateString('en-GB', {
   day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
 });
 ---
-<Base title={post.data.title} description={post.data.description}>
+<Base
+  title={post.data.title}
+  description={post.data.description}
+  ogImage={`/og/writing/${post.id}.png`}
+  ogType="article"
+>
   <article>
     <header class="prose-width">
       <p class="label"><time datetime={post.data.date.toISOString().slice(0, 10)}>{dateFmt}</time></p>

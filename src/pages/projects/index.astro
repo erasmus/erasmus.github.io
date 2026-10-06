@@ -2,9 +2,14 @@
 import Base from '../../layouts/Base.astro';
 import BentoGrid from '../../components/BentoGrid.astro';
 import { SITE } from '../../data/site';
+import { SECTIONS } from '../../data/sections';
 ---
-<Base title={`Projects — ${SITE.name}`} description="Selected product and technology work in finance and digital identity.">
-  <h1 class="prose-width">Projects</h1>
+<Base
+  title={`${SECTIONS.projects.title} — ${SITE.name}`}
+  description={SECTIONS.projects.description}
+  ogImage="/og/projects.png"
+>
+  <h1 class="prose-width">{SECTIONS.projects.title}</h1>
   <BentoGrid all />
 </Base>
 <style>

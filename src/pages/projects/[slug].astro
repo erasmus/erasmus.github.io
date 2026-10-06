@@ -2,9 +2,10 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Prose from '../../layouts/Prose.astro';
+import ProjectLogos from '../../components/ProjectLogos.astro';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
   return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
 }
 
@@ -12,12 +13,19 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 const d = project.data;
 ---
-<Base title={d.title} description={d.summary}>
+<Base
+  title={d.title}
+  description={d.summary}
+  ogImage={`/og/projects/${project.id}.png`}
+  ogImageAlt={`${d.title} — ${d.role}, ${d.org}`}
+  ogType="article"
+>
   <article>
     <header class="prose-width">
       <p class="label">{d.domain}</p>
       <h1>{d.title}</h1>
       <p class="role">{d.role}, {d.org}</p>
+      {d.logos && <ProjectLogos logos={d.logos} />}
     </header>
     <Prose><Content /></Prose>
     {d.links && (

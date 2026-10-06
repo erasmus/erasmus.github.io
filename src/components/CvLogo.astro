@@ -21,9 +21,12 @@ const heights: Record<string, string> = {
 };
 const height = heights[logo];
 ---
-{src ? <img class="logo" src={src} alt={name} style={height ? `height: ${height}` : undefined} /> : name}
+{src ? <img class="logo" src={src} alt={name} style={height ? `--logo-h: ${height}` : undefined} /> : name}
 <style>
+  /* The height comes through as a custom property so a container can scale a whole
+     group of logos at once (--logo-scale) without fighting the per-logo inline style. */
   .logo {
-    height: 24px; width: auto; max-width: 190px; object-fit: contain; object-position: left center; flex: none;
+    height: calc(var(--logo-h, 24px) * var(--logo-scale, 1));
+    width: auto; max-width: 190px; object-fit: contain; object-position: left center; flex: none;
   }
 </style>

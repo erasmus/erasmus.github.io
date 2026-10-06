@@ -1,5 +1,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { CREDITS, type Credit } from '../data/credits';
+import { CV } from '../data/cv';
 
 // Shared plumbing for the plain-text endpoints (llms.txt, llms-full.txt,
 // cv.txt). All of them are generated from the same data that renders the
@@ -21,6 +22,20 @@ export async function publishedProjects(): Promise<CollectionEntry<'projects'>[]
 
 export function publishedCredits(): Credit[] {
   return CREDITS.filter((c) => !c.title.startsWith('PLACEHOLDER'));
+}
+
+// Experience as a markdown list, one item per position: the one-line note and the
+// longform summary run together, with the highlights nested beneath.
+export function experienceMarkdown(): string[] {
+  return CV.experience.flatMap((org) =>
+    org.positions.flatMap((p) => {
+      const blurb = [p.note, p.summary].filter(Boolean).join(' ');
+      return [
+        `- ${p.title}, ${org.org} (${p.dates})${blurb ? ` — ${blurb}` : ''}`,
+        ...(p.highlights ?? []).map((h) => `  - ${h}`),
+      ];
+    }),
+  );
 }
 
 export function postUrl(site: string, post: CollectionEntry<'posts'>): string {
