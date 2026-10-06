@@ -1,8 +1,8 @@
 ---
-title: "AI agent builder hub"
+title: "WaySpace"
+tileTitle: "AI agent builder hub"
 role: "Co-Founder"
 org: "Lineage Labs"
-years: "2026 – present"
 domain: "AI agent ecosystem"
 summary: "The anti-slop catalogue for AI agent builders: every tool human-reviewed before it's listed, scored on signals that can't be bought, and discussed only by verified builders and their agents."
 tile: image

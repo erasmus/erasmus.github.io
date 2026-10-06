@@ -2,7 +2,6 @@
 title: "PLACEHOLDER — Fifth project"
 role: "Role goes here"
 org: "Organisation"
-years: "2019"
 domain: "Fintech"
 summary: "One-line summary of the project and its outcome."
 tile: text

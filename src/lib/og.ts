@@ -201,7 +201,6 @@ async function projectCard(d: {
   title: string;
   role: string;
   org: string;
-  years: string;
   domain: string;
   image?: string;
   tile: 'image' | 'logo' | 'text';
@@ -227,7 +226,7 @@ async function projectCard(d: {
       ),
       col(
         { gap: 10 },
-        h('div', { fontFamily: SANS, fontSize: 24, color: ON_INK }, `${d.role} · ${d.org} · ${d.years}`),
+        h('div', { fontFamily: SANS, fontSize: 24, color: ON_INK }, `${d.role} · ${d.org}`),
         h('div', { fontFamily: SANS, fontSize: 21, color: ON_INK_FAINT }, 'erasmus.github.io/projects'),
       ),
     ),
@@ -324,7 +323,6 @@ export type CardSpec =
       title: string;
       role: string;
       org: string;
-      years: string;
       domain: string;
       image?: string;
       tile: 'image' | 'logo' | 'text';

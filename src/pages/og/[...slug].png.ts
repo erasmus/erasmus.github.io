@@ -33,7 +33,6 @@ export const getStaticPaths = (async () => {
           title: project.data.title,
           role: project.data.role,
           org: project.data.org,
-          years: project.data.years,
           domain: project.data.domain,
           image: project.data.image?.src,
           tile: project.data.tile,

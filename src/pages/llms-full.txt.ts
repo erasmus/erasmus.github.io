@@ -76,7 +76,7 @@ export async function GET(context: APIContext) {
     lines.push(
       `### ${d.title}`,
       '',
-      `- Role: ${d.role}, ${d.org} (${d.years})`,
+      `- Role: ${d.role}, ${d.org}`,
       `- Domain: ${d.domain}`,
       `- URL: ${projectUrl(site, project)}`,
       ...(d.links ?? []).map((l) => `- ${l.label}: ${l.url}`),

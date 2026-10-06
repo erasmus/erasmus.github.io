@@ -2,7 +2,6 @@
 title: "Private ID proofs"
 role: "Director of Product"
 org: "Concordium"
-years: "2023 – 2026"
 domain: "Digital identity"
 summary: "A self-custodial mobile app that turns Concordium's protocol-level, zero-knowledge identity layer into something ordinary people can actually use — prove a fact about yourself, reveal nothing else."
 tile: image
