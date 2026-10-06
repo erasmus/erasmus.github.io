@@ -1,0 +1,180 @@
+---
+// Small line illustrations for the library cards, drawn in the site's ink on
+// a 320x200 canvas. Colour is kept for the one bookmark that is about colour.
+// Each picture has a little hover move, driven from the card in library/index.
+import type { LibraryArt } from '../data/library';
+interface Props { art: LibraryArt }
+const { art } = Astro.props;
+
+// A 21x21 QR-ish field: real finder patterns in three corners, seeded noise
+// for the data modules so the picture is the same on every build.
+const QR_N = 21;
+const QR_M = 7;
+const qrX = (320 - QR_N * QR_M) / 2;
+const qrY = (200 - QR_N * QR_M) / 2;
+const inFinder = (r: number, c: number) =>
+  (r < 8 && c < 8) || (r < 8 && c >= QR_N - 8) || (r >= QR_N - 8 && c < 8);
+let seed = 7;
+const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+const qrDots: { x: number; y: number }[] = [];
+for (let r = 0; r < QR_N; r++) {
+  for (let c = 0; c < QR_N; c++) {
+    if (inFinder(r, c)) continue;
+    if (rand() < 0.48) qrDots.push({ x: qrX + c * QR_M + QR_M / 2, y: qrY + r * QR_M + QR_M / 2 });
+  }
+}
+const finders = [
+  [qrX, qrY],
+  [qrX + (QR_N - 7) * QR_M, qrY],
+  [qrX, qrY + (QR_N - 7) * QR_M],
+];
+
+// Sine wave across the canvas for the electric card.
+const wave = Array.from({ length: 81 }, (_, i) => {
+  const x = -40 + i * 5;
+  return `${i ? 'L' : 'M'}${x} ${100 + Math.sin(i / 4) * 34}`;
+}).join(' ');
+
+// The agency grid: a field of dots the arrow cuts straight through.
+const grid = Array.from({ length: 6 * 10 }, (_, i) => ({ x: 52 + (i % 10) * 24, y: 46 + Math.floor(i / 10) * 22 }));
+---
+<svg class={`art art-${art}`} viewBox="0 0 320 200" aria-hidden="true" focusable="false">
+  {art === 'color' && (
+    <g class="swatches">
+      <g class="sw sw-1"><rect x="74" y="44" width="92" height="120" fill="#D2603A" /><rect x="74" y="140" width="92" height="24" fill="#F0EEE6" opacity="0.9" /></g>
+      <g class="sw sw-2"><rect x="114" y="36" width="92" height="120" fill="#E5BC6A" /><rect x="114" y="132" width="92" height="24" fill="#F0EEE6" opacity="0.9" /></g>
+      <g class="sw sw-3"><rect x="154" y="28" width="92" height="120" fill="#355A6E" /><rect x="154" y="124" width="92" height="24" fill="#F0EEE6" opacity="0.9" /></g>
+      <rect x="164" y="133" width="30" height="5" fill="#355A6E" opacity="0.6" />
+      <rect x="198" y="133" width="18" height="5" fill="#355A6E" opacity="0.3" />
+    </g>
+  )}
+
+  {art === 'qr' && (
+    <g class="qr">
+      {finders.map(([x, y]) => (
+        <g>
+          <rect x={x + 1.5} y={y + 1.5} width={QR_M * 7 - 3} height={QR_M * 7 - 3} rx="10" fill="none" stroke="currentColor" stroke-width="3" />
+          <rect x={x + 14} y={y + 14} width={QR_M * 3 - 7} height={QR_M * 3 - 7} rx="5" fill="currentColor" />
+        </g>
+      ))}
+      {qrDots.map((d, i) => <circle class="qr-dot" style={`--i:${i % 9}`} cx={d.x} cy={d.y} r="2.6" fill="currentColor" />)}
+    </g>
+  )}
+
+  {art === 'svg' && (
+    <g class="vector" fill="none" stroke="currentColor">
+      <g class="cruft" stroke-width="1" opacity="0.35">
+        <path d="M40 150 l8 -6 l5 3 l7 -9 l4 2 l6 -8 l5 1" />
+        <circle cx="54" cy="58" r="2" fill="currentColor" stroke="none" />
+        <circle cx="270" cy="160" r="2" fill="currentColor" stroke="none" />
+        <circle cx="282" cy="52" r="2" fill="currentColor" stroke="none" />
+        <path d="M250 40 h18 M259 31 v18" />
+      </g>
+      <path d="M60 140 C 100 40, 160 40, 160 100 S 230 170, 262 60" stroke-width="2.5" />
+      <g stroke-width="1" stroke-dasharray="3 3" opacity="0.6">
+        <path d="M60 140 L100 40" /><path d="M160 100 L160 40" /><path d="M160 100 L160 160" /><path d="M262 60 L230 170" />
+      </g>
+      <g fill="var(--paper)" stroke-width="1.5">
+        <rect x="55" y="135" width="10" height="10" /><rect x="155" y="95" width="10" height="10" /><rect x="257" y="55" width="10" height="10" />
+      </g>
+      <g fill="currentColor" stroke="none">
+        <circle cx="100" cy="40" r="3.5" /><circle cx="160" cy="40" r="3.5" /><circle cx="160" cy="160" r="3.5" /><circle cx="230" cy="170" r="3.5" />
+      </g>
+    </g>
+  )}
+
+  {art === 'ux' && (
+    <g class="fitts" fill="none" stroke="currentColor">
+      <circle cx="226" cy="96" r="46" stroke-width="1.5" />
+      <circle cx="226" cy="96" r="30" stroke-width="1" opacity="0.5" />
+      <circle cx="226" cy="96" r="14" fill="currentColor" stroke="none" />
+      <circle cx="104" cy="152" r="9" stroke-width="1.5" />
+      <circle cx="128" cy="44" r="5" stroke-width="1.5" />
+      <path d="M62 112 Q 140 70, 196 92" stroke-width="1" stroke-dasharray="4 4" opacity="0.6" />
+      <g class="cursor">
+        <path d="M52 96 l0 32 l8 -8 l6 13 l6 -3 l-6 -12 l11 0 z" fill="var(--paper)" stroke-width="1.5" stroke-linejoin="round" />
+      </g>
+    </g>
+  )}
+
+  {art === 'agency' && (
+    <g class="agency">
+      <rect x="38" y="32" width="244" height="136" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.45" />
+      {grid.map((d) => <circle cx={d.x} cy={d.y} r="2" fill="currentColor" opacity="0.3" />)}
+      <g class="escape" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M76 156 L292 14" />
+        <path d="M268 14 L292 14 L286 37" />
+      </g>
+      <circle cx="76" cy="156" r="5" fill="currentColor" />
+    </g>
+  )}
+
+  {art === 'electric' && (
+    <g class="electric">
+      <g class="wave-track"><path d={wave} fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.55" /></g>
+      {[0, 1, 2, 3].map((i) => (
+        <g transform={`translate(${78 + i * 44} 0)`}>
+          <rect x="0" y="56" width="32" height="96" rx="5" fill="var(--paper)" stroke="currentColor" stroke-width="1.5" />
+          <rect x="10" y="49" width="12" height="7" fill="currentColor" />
+          <rect class="charge" style={`--i:${i}`} x="5" y={62 + (3 - i) * 14} width="22" height={84 - (3 - i) * 14} rx="2" fill="currentColor" opacity={0.25 + i * 0.2} />
+        </g>
+      ))}
+    </g>
+  )}
+
+  {art === 'sea-power' && (
+    <g class="sea">
+      <defs>
+        <clipPath id="land-clip"><path d="M168 0 C 150 40, 196 70, 176 110 S 200 170, 186 200 L320 200 L320 0 Z" /></clipPath>
+      </defs>
+      <g class="waves" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5">
+        {[30, 54, 78, 102, 126, 150, 174].map((y, i) => (
+          <path d={`M${-20 + (i % 2) * 12} ${y} q 10 -6 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0`} />
+        ))}
+      </g>
+      <g clip-path="url(#land-clip)">
+        <rect x="150" y="0" width="170" height="200" fill="var(--paper)" />
+        <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.45">
+          <ellipse cx="262" cy="96" rx="80" ry="64" />
+          <ellipse cx="262" cy="96" rx="58" ry="44" />
+          <ellipse cx="266" cy="94" rx="36" ry="26" />
+          <ellipse cx="268" cy="92" rx="14" ry="10" />
+        </g>
+      </g>
+      <path d="M168 0 C 150 40, 196 70, 176 110 S 200 170, 186 200" fill="none" stroke="currentColor" stroke-width="2.5" />
+      <path d="M30 172 C 90 150, 120 60, 150 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5" />
+      <g class="ship"><path d="M138 30 l14 0 l-3 6 l-8 0 z M145 30 l0 -12 l7 8 z" fill="currentColor" /></g>
+      <rect x="262" y="86" width="12" height="12" fill="currentColor" transform="rotate(45 268 92)" />
+    </g>
+  )}
+</svg>
+<style>
+  .art { display: block; width: 100%; height: 100%; color: var(--ink); overflow: visible; }
+  .art :global(*) { transition: transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1), opacity 300ms ease-out; }
+
+  /* Hover moves. :global() because the hovered card lives in the page. */
+  .sw { transform-box: fill-box; transform-origin: 50% 100%; }
+  :global(.book:hover) .sw-1, :global(.book:focus-visible) .sw-1 { transform: rotate(-9deg) translateX(-8px); }
+  :global(.book:hover) .sw-3, :global(.book:focus-visible) .sw-3 { transform: rotate(9deg) translateX(8px); }
+
+  .qr-dot { transform-box: fill-box; transform-origin: center; transition-delay: calc(var(--i) * 25ms); }
+  :global(.book:hover) .qr-dot, :global(.book:focus-visible) .qr-dot { transform: scale(1.3); }
+
+  :global(.book:hover) .cruft, :global(.book:focus-visible) .cruft { opacity: 0; }
+
+  :global(.book:hover) .cursor, :global(.book:focus-visible) .cursor { transform: translate(160px, -14px); }
+
+  .escape { transform-box: view-box; }
+  :global(.book:hover) .escape, :global(.book:focus-visible) .escape { transform: translate(8px, -5px); }
+
+  :global(.book:hover) .wave-track, :global(.book:focus-visible) .wave-track { transform: translateX(-25px); }
+  .charge { transform-box: fill-box; transform-origin: 50% 100%; transition-delay: calc(var(--i) * 60ms); }
+  :global(.book:hover) .charge, :global(.book:focus-visible) .charge { transform: scaleY(1.12); }
+
+  :global(.book:hover) .waves, :global(.book:focus-visible) .waves { transform: translateX(-20px); }
+  :global(.book:hover) .ship, :global(.book:focus-visible) .ship { transform: translate(-10px, 8px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .art :global(*) { transition: none; }
+  }
+</style>

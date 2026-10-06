@@ -1,6 +1,7 @@
 import type { APIContext } from 'astro';
 import { SITE } from '../data/site';
 import { CV } from '../data/cv';
+import { LIBRARY } from '../data/library';
 import {
   publishableBody,
   absolutize,
@@ -105,6 +106,15 @@ export async function GET(context: APIContext) {
       absolutize(publishableBody(post.body), site),
       '',
     );
+  }
+
+  lines.push('## Library', '', `Bookmarked resources, also at ${site}/library/`, '');
+  for (const shelf of LIBRARY) {
+    lines.push(`### ${shelf.title}`, '');
+    for (const b of shelf.items) {
+      lines.push(`- [${b.title}](${b.url})${b.by ? ` by ${b.by}` : ''}: ${b.note}`);
+    }
+    lines.push('');
   }
 
   return textResponse(lines);

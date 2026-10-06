@@ -9,4 +9,8 @@ export const SECTIONS = {
     title: 'Writing',
     description: 'Essays on trust, technology, and transcendence.',
   },
+  library: {
+    title: 'Library',
+    description: 'Bookmarks worth keeping: tools, essays, and lectures I return to.',
+  },
 } as const;

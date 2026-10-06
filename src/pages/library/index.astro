@@ -1,0 +1,96 @@
+---
+import Base from '../../layouts/Base.astro';
+import LibraryArt from '../../components/LibraryArt.astro';
+import { SITE } from '../../data/site';
+import { SECTIONS } from '../../data/sections';
+import { LIBRARY, sourceOf } from '../../data/library';
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+<Base
+  title={`${SECTIONS.library.title} — ${SITE.name}`}
+  description={SECTIONS.library.description}
+  ogImage="/og/library.png"
+>
+  <header class="intro wide-width">
+    <h1>{SECTIONS.library.title}</h1>
+    <p class="standfirst">{SECTIONS.library.description}</p>
+    <nav class="shelves" aria-label="Library sections">
+      {LIBRARY.map((shelf, i) => (
+        <a href={`#${shelf.id}`}><span class="num">{pad(i + 1)}</span>{shelf.title}</a>
+      ))}
+    </nav>
+  </header>
+
+  {LIBRARY.map((shelf, i) => (
+    <section id={shelf.id} class="shelf wide-width" aria-labelledby={`${shelf.id}-heading`}>
+      <div class="shelf-head">
+        <p class="label">{pad(i + 1)} · {shelf.items.length} {shelf.items.length === 1 ? 'item' : 'items'}</p>
+        <h2 id={`${shelf.id}-heading`}>{shelf.title}</h2>
+      </div>
+      <ul class="books">
+        {shelf.items.map((b) => (
+          <li>
+            <a class="book" href={b.url} target="_blank" rel="noopener">
+              <div class="plate"><LibraryArt art={b.art} /></div>
+              <div class="book-text">
+                <p class="label source">{sourceOf(b)} <span class="arrow" aria-hidden="true">↗</span></p>
+                <h3>{b.title}</h3>
+                {b.by && <p class="by">{b.by}</p>}
+                <p class="note">{b.note}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Base>
+<style>
+  .intro { margin-block: 24px 40px; }
+  h1 { font-size: 2.2rem; }
+  .standfirst { color: var(--ink-muted); margin-top: 6px; max-width: 34em; }
+  .shelves { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .shelves a {
+    font-family: var(--font-sans); font-size: 13px; text-decoration: none;
+    padding: 6px 12px; border: 1px solid var(--rule); background: var(--tile);
+    transition: background-color 150ms ease-out;
+  }
+  .shelves a:hover { background: rgba(31, 30, 29, 0.08); color: var(--ink); }
+  .shelves .num { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; color: var(--ink-muted); margin-right: 8px; }
+
+  /* Each shelf: category title in a narrow left column that sticks while its
+     cards scroll past, cards filling the rest. Stacks on narrow screens. */
+  .shelf {
+    display: grid; grid-template-columns: 180px 1fr; gap: 16px 32px;
+    padding-block: 28px 36px; border-top: 1px solid var(--rule);
+    scroll-margin-top: 16px;
+  }
+  .shelf-head { align-self: start; position: sticky; top: 24px; }
+  .shelf-head h2 { font-size: 1.6rem; margin-top: 4px; }
+  @media (max-width: 759.98px) {
+    .shelf { grid-template-columns: 1fr; }
+    .shelf-head { position: static; }
+  }
+
+  .books { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+  .books li { display: flex; }
+
+  .book {
+    flex: 1; display: flex; flex-direction: column; text-decoration: none;
+    border: 1px solid var(--rule); background: var(--tile);
+    transition: background-color 150ms ease-out;
+  }
+  .book:hover { background: rgba(31, 30, 29, 0.08); color: var(--ink); }
+  .plate {
+    aspect-ratio: 16 / 10; padding: 14px 18px;
+    background: var(--paper); border-bottom: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .book-text { padding: 14px 16px 18px; }
+  .source { display: flex; justify-content: space-between; gap: 8px; }
+  .arrow { font-size: 12px; transition: transform 200ms ease-out; }
+  .book:hover .arrow, .book:focus-visible .arrow { transform: translate(2px, -2px); color: var(--ink); }
+  .book h3 { font-size: 1.2rem; margin-top: 6px; }
+  .by { font-family: var(--font-sans); font-size: 13px; color: var(--ink-muted); margin-top: 3px; }
+  .note { font-size: 0.9rem; line-height: 1.5; margin-top: 10px; }
+</style>

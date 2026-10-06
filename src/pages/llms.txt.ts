@@ -1,6 +1,7 @@
 import type { APIContext } from 'astro';
 import { SITE } from '../data/site';
 import { CV } from '../data/cv';
+import { LIBRARY } from '../data/library';
 import {
   isoDate,
   postUrl,
@@ -54,6 +55,14 @@ export async function GET(context: APIContext) {
     ...posts.map(
       (p) =>
         `- [${p.data.title}](${postUrl(site, p)}): ${p.data.description} (${isoDate(p.data.date)})`,
+    ),
+    '',
+    '## Library',
+    '',
+    `Bookmarked resources, also at ${site}/library/`,
+    '',
+    ...LIBRARY.flatMap((shelf) =>
+      shelf.items.map((b) => `- [${b.title}](${b.url}) (${shelf.title}${b.by ? `, ${b.by}` : ''}): ${b.note}`),
     ),
     '',
     '## Profile',
