@@ -11,7 +11,9 @@ export type LibraryArt =
   | 'electric'
   | 'cable'
   | 'orbit'
-  | 'sea-power';
+  | 'sea-power'
+  | 'sunrise'
+  | 'tiling';
 
 export interface Bookmark {
   title: string;
@@ -73,19 +75,6 @@ export const LIBRARY: Shelf[] = [
     ],
   },
   {
-    id: 'being',
-    title: 'Being',
-    items: [
-      {
-        title: 'High Agency in 30 Minutes',
-        by: 'George Mack',
-        url: 'https://www.highagency.com/',
-        note: 'A worthwhile distillation of what high-agency people do differently, and how to become one of them.',
-        art: 'agency',
-      },
-    ],
-  },
-  {
     id: 'technology',
     title: 'Technology',
     items: [
@@ -112,6 +101,33 @@ export const LIBRARY: Shelf[] = [
         source: 'NDC Copenhagen 2026 · YouTube',
         note: 'The case for, and the engineering problems of, putting compute in orbit — power, cooling, launch, and latency.',
         art: 'orbit',
+      },
+      {
+        title: 'Omarchy',
+        by: 'DHH',
+        url: 'https://omarchy.org/',
+        note: 'The most fun Linux will ever be. Agentic-first is the future of the OS.',
+        art: 'tiling',
+      },
+    ],
+  },
+  {
+    id: 'being',
+    title: 'Being',
+    items: [
+      {
+        title: 'High Agency in 30 Minutes',
+        by: 'George Mack',
+        url: 'https://www.highagency.com/',
+        note: 'A worthwhile distillation of what high-agency people do differently, and how to become one of them.',
+        art: 'agency',
+      },
+      {
+        title: 'Waking Up',
+        by: 'Sam Harris',
+        url: 'https://www.wakingup.com/',
+        note: 'Meditation + talks on consciousness and well-being.',
+        art: 'sunrise',
       },
     ],
   },

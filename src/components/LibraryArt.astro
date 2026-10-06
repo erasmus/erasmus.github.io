@@ -206,6 +206,47 @@ const grid = Array.from({ length: 6 * 10 }, (_, i) => ({ x: 52 + (i % 10) * 24, 
       <rect x="262" y="86" width="12" height="12" fill="currentColor" transform="rotate(45 268 92)" />
     </g>
   )}
+  {art === 'tiling' && (
+    <g class="tiling">
+      <rect x="36" y="22" width="248" height="8" fill="currentColor" opacity="0.12" />
+      <g fill="currentColor" opacity="0.5"><circle cx="44" cy="26" r="1.8" /><circle cx="51" cy="26" r="1.8" /><circle cx="58" cy="26" r="1.8" /><rect x="262" y="24" width="16" height="4" /></g>
+      <g fill="var(--paper)" stroke="currentColor" stroke-width="1.5">
+        <rect x="36" y="36" width="120" height="142" />
+      </g>
+      <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <path d="M48 52 l6 4 l-6 4" fill="none" /><path d="M60 60 H104" />
+        <path d="M48 74 H128 M48 86 H112 M48 98 H136 M48 110 H92" opacity="0.4" />
+        <path d="M48 124 l6 4 l-6 4" fill="none" />
+      </g>
+      <rect class="caret" x="60" y="124" width="7" height="10" fill="currentColor" />
+      <g class="tile tile-top">
+        <rect x="164" y="36" width="120" height="67" fill="var(--paper)" stroke="currentColor" stroke-width="1.5" />
+        <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"><path d="M176 52 H220 M186 62 H256 M186 72 H240 M176 82 H206" /></g>
+      </g>
+      <g class="tile tile-bottom">
+        <rect x="164" y="111" width="120" height="67" fill="var(--paper)" stroke="currentColor" stroke-width="1.5" />
+        <path d="M176 164 L200 140 L216 152 L244 124 L272 146" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        <path d="M176 164 L200 140 L216 152 L244 124 L272 146 V164 Z" fill="currentColor" opacity="0.12" />
+      </g>
+    </g>
+  )}
+
+  {art === 'sunrise' && (
+    <g class="sunrise">
+      <defs><clipPath id="horizon-clip"><rect x="0" y="0" width="320" height="140" /></clipPath></defs>
+      <g clip-path="url(#horizon-clip)">
+        <g class="sun">
+          <circle cx="160" cy="146" r="88" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 5" opacity="0.4" />
+          <circle cx="160" cy="146" r="62" fill="none" stroke="currentColor" stroke-width="1" opacity="0.45" />
+          <circle cx="160" cy="146" r="34" fill="currentColor" />
+        </g>
+      </g>
+      <path d="M20 140 H300" stroke="currentColor" stroke-width="1.5" />
+      <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.45">
+        <path d="M128 152 H192 M138 162 H182 M148 172 H172 M156 182 H164" />
+      </g>
+    </g>
+  )}
 </svg>
 <style>
   .art { display: block; width: 100%; height: 100%; color: var(--ink); overflow: visible; }
@@ -242,6 +283,13 @@ const grid = Array.from({ length: 6 * 10 }, (_, i) => ({ x: 52 + (i % 10) * 24, 
 
   :global(.book:hover) .waves, :global(.book:focus-visible) .waves { transform: translateX(-20px); }
   :global(.book:hover) .ship, :global(.book:focus-visible) .ship { transform: translate(-10px, 8px); }
+
+  :global(.book:hover) .tile-top, :global(.book:focus-visible) .tile-top { transform: translateY(75px); }
+  :global(.book:hover) .tile-bottom, :global(.book:focus-visible) .tile-bottom { transform: translateY(-75px); }
+  :global(.book:hover) .caret, :global(.book:focus-visible) .caret { animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  :global(.book:hover) .sun, :global(.book:focus-visible) .sun { transform: translateY(-14px); }
 
   @media (prefers-reduced-motion: reduce) {
     .art :global(*) { transition: none; animation: none !important; }
