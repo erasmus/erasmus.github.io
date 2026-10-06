@@ -37,6 +37,8 @@ export async function GET(context: APIContext) {
     for (const p of org.positions) {
       lines.push(`${p.title}, ${org.org} (${p.dates})`);
       if (p.note) lines.push(`  ${p.note}`);
+      if (p.summary) lines.push(`  ${p.summary}`);
+      for (const h of p.highlights ?? []) lines.push(`  - ${h}`);
       lines.push('');
     }
   }
