@@ -3,11 +3,14 @@
 // new case there when a new bookmark needs its own picture.
 export type LibraryArt =
   | 'color'
+  | 'color-tree'
   | 'qr'
   | 'svg'
   | 'ux'
   | 'agency'
   | 'electric'
+  | 'cable'
+  | 'orbit'
   | 'sea-power';
 
 export interface Bookmark {
@@ -39,6 +42,12 @@ export const LIBRARY: Shelf[] = [
         url: 'https://colorcombinations.org',
         note: 'Wada’s 1930s catalogue of colour pairings, rebuilt as a browsable palette. Still the best place to start a colour scheme.',
         art: 'color',
+      },
+      {
+        title: 'Storied Colors',
+        url: 'https://storiedcolors.com/',
+        note: 'A carefully curated catalogue of colours and their genealogy.',
+        art: 'color-tree',
       },
       {
         title: 'QRFrame',
@@ -87,6 +96,22 @@ export const LIBRARY: Shelf[] = [
         source: 'notboring.co',
         note: 'Batteries, magnets, motors and power electronics as one “electric stack” — and why whoever builds it shapes the century.',
         art: 'electric',
+      },
+      {
+        title: 'The Undersea Cable Network',
+        by: 'Richard Campbell',
+        url: 'https://www.youtube.com/watch?v=RMveiKaXtQw',
+        source: 'NDC London 2026 · YouTube',
+        note: 'How the cables on the ocean floor that carry nearly all of the internet are laid, repaired, and fought over.',
+        art: 'cable',
+      },
+      {
+        title: 'Above the Cloud: Building Data Centers in Space',
+        by: 'Richard Campbell',
+        url: 'https://www.youtube.com/watch?v=eo7MEPgWGic',
+        source: 'NDC Copenhagen 2026 · YouTube',
+        note: 'The case for, and the engineering problems of, putting compute in orbit — power, cooling, launch, and latency.',
+        art: 'orbit',
       },
     ],
   },

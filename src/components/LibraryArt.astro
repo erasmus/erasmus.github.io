@@ -49,6 +49,65 @@ const grid = Array.from({ length: 6 * 10 }, (_, i) => ({ x: 52 + (i % 10) * 24, 
     </g>
   )}
 
+  {art === 'color-tree' && (
+    <g class="lineage">
+      <g fill="none" stroke="currentColor" stroke-width="1.25" opacity="0.6">
+        <path d="M160 52 V76 M84 76 H236 M84 76 V100 M160 76 V100 M236 76 V100" />
+        <path d="M84 124 V140 M60 140 H108 M60 140 V156 M108 140 V156" />
+        <path d="M236 124 V140 M212 140 H260 M212 140 V156 M260 140 V156" />
+      </g>
+      <g class="gen gen-0"><rect x="142" y="18" width="36" height="36" fill="#8C3B2E" /></g>
+      <g class="gen gen-1">
+        <rect x="68" y="100" width="32" height="24" fill="#B5543F" />
+        <rect x="144" y="100" width="32" height="24" fill="#6E3A4A" />
+        <rect x="220" y="100" width="32" height="24" fill="#C9874E" />
+      </g>
+      <g class="gen gen-2">
+        <rect x="48" y="156" width="24" height="18" fill="#D98A70" />
+        <rect x="96" y="156" width="24" height="18" fill="#E8B7A0" />
+        <rect x="200" y="156" width="24" height="18" fill="#E2B36C" />
+        <rect x="248" y="156" width="24" height="18" fill="#EFD3A4" />
+      </g>
+    </g>
+  )}
+
+  {art === 'cable' && (
+    <g class="cable">
+      <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.4">
+        <path d="M44 46 q 10 -5 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 12 0" />
+      </g>
+      <path d="M0 40 H46 V200 H0 Z" fill="currentColor" opacity="0.12" />
+      <path d="M274 40 H320 V200 H274 Z" fill="currentColor" opacity="0.12" />
+      <path d="M46 40 V200 M274 40 V200" stroke="currentColor" stroke-width="1.5" />
+      <path d="M46 150 C 80 150, 90 176, 130 176 S 200 168, 230 174 S 262 150, 274 150" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4" />
+      <path class="line" d="M24 70 V100 C 60 100, 80 160, 130 164 S 210 156, 240 162 S 270 100, 296 100 V70" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+      <path class="pulse" d="M24 70 V100 C 60 100, 80 160, 130 164 S 210 156, 240 162 S 270 100, 296 100 V70" fill="none" stroke="var(--paper)" stroke-width="1" stroke-dasharray="6 18" />
+      <g fill="var(--paper)" stroke="currentColor" stroke-width="1.5">
+        <circle cx="130" cy="164" r="5" /><circle cx="196" cy="160" r="5" />
+      </g>
+      <g fill="currentColor"><rect x="16" y="58" width="16" height="12" /><rect x="288" y="58" width="16" height="12" /></g>
+    </g>
+  )}
+
+  {art === 'orbit' && (
+    <g class="orbit">
+      <path d="M-20 200 Q 160 128, 340 200" fill="currentColor" opacity="0.1" />
+      <path d="M-20 200 Q 160 128, 340 200" fill="none" stroke="currentColor" stroke-width="1.5" />
+      <ellipse cx="160" cy="150" rx="150" ry="62" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 5" opacity="0.5" />
+      {[[40, 30], [282, 40], [210, 22], [24, 120], [300, 120]].map(([x, y]) => <circle cx={x} cy={y} r="1.5" fill="currentColor" opacity="0.5" />)}
+      <g class="sat">
+        <g fill="none" stroke="currentColor" stroke-width="1.25">
+          <rect x="90" y="78" width="46" height="26" /><path d="M105.3 78 V104 M120.6 78 V104 M90 91 H136" />
+          <rect x="184" y="78" width="46" height="26" /><path d="M199.3 78 V104 M214.6 78 V104 M184 91 H230" />
+          <path d="M136 91 H146 M174 91 H184" />
+        </g>
+        <rect x="146" y="70" width="28" height="42" fill="var(--paper)" stroke="currentColor" stroke-width="2" />
+        <g stroke="currentColor" stroke-width="1.5"><path d="M151 80 H169 M151 88 H169 M151 96 H169" /></g>
+        <g fill="currentColor"><circle cx="153" cy="104" r="1.6" /><circle cx="158" cy="104" r="1.6" /></g>
+      </g>
+    </g>
+  )}
+
   {art === 'qr' && (
     <g class="qr">
       {finders.map(([x, y]) => (
@@ -157,6 +216,16 @@ const grid = Array.from({ length: 6 * 10 }, (_, i) => ({ x: 52 + (i % 10) * 24, 
   :global(.book:hover) .sw-1, :global(.book:focus-visible) .sw-1 { transform: rotate(-9deg) translateX(-8px); }
   :global(.book:hover) .sw-3, :global(.book:focus-visible) .sw-3 { transform: rotate(9deg) translateX(8px); }
 
+  .gen-1 { transform-box: view-box; }
+  :global(.book:hover) .gen-1, :global(.book:focus-visible) .gen-1 { transform: translateY(-3px); }
+  :global(.book:hover) .gen-2, :global(.book:focus-visible) .gen-2 { transform: translateY(-6px); }
+
+  .pulse { opacity: 0; }
+  :global(.book:hover) .pulse, :global(.book:focus-visible) .pulse { opacity: 1; animation: pulse 1.2s linear infinite; }
+  @keyframes pulse { to { stroke-dashoffset: -48; } }
+
+  :global(.book:hover) .sat, :global(.book:focus-visible) .sat { transform: translate(14px, -6px) rotate(3deg); }
+
   .qr-dot { transform-box: fill-box; transform-origin: center; transition-delay: calc(var(--i) * 25ms); }
   :global(.book:hover) .qr-dot, :global(.book:focus-visible) .qr-dot { transform: scale(1.3); }
 
@@ -175,6 +244,6 @@ const grid = Array.from({ length: 6 * 10 }, (_, i) => ({ x: 52 + (i % 10) * 24, 
   :global(.book:hover) .ship, :global(.book:focus-visible) .ship { transform: translate(-10px, 8px); }
 
   @media (prefers-reduced-motion: reduce) {
-    .art :global(*) { transition: none; }
+    .art :global(*) { transition: none; animation: none !important; }
   }
 </style>

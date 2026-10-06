@@ -24,8 +24,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
   {LIBRARY.map((shelf, i) => (
     <section id={shelf.id} class="shelf wide-width" aria-labelledby={`${shelf.id}-heading`}>
       <div class="shelf-head">
-        <p class="label">{pad(i + 1)} · {shelf.items.length} {shelf.items.length === 1 ? 'item' : 'items'}</p>
-        <h2 id={`${shelf.id}-heading`}>{shelf.title}</h2>
+        <h2 id={`${shelf.id}-heading`}><span class="label">{pad(i + 1)} ·</span> {shelf.title}</h2>
       </div>
       <ul class="books">
         {shelf.items.map((b) => (
@@ -66,7 +65,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
     scroll-margin-top: 16px;
   }
   .shelf-head { align-self: start; position: sticky; top: 24px; }
-  .shelf-head h2 { font-size: 1.6rem; margin-top: 4px; }
+  .shelf-head h2 { font-size: 1.6rem; }
+  .shelf-head h2 .label { font-size: 11px; vertical-align: 0.3em; margin-right: 2px; }
   @media (max-width: 759.98px) {
     .shelf { grid-template-columns: 1fr; }
     .shelf-head { position: static; }
