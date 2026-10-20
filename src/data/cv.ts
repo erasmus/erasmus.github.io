@@ -22,7 +22,7 @@ export interface Cv { experience: Org[]; education: Edu[]; languages: string[] }
 export const CV: Cv = {
   experience: [
     { org: 'Lineage Labs', logo: 'lineage-labs-logo-dark.svg', positions: [{
-      title: 'Co-Founder', dates: 'Feb 2026 – present',
+      title: 'Founder', dates: 'Feb 2026 – present',
       note: 'Building trust rails for AI agents.',
       summary: 'Designed, engineered and deployed WaySpace, an agentic knowledge architecture using LLM-based indexing and hybrid search (symbolic parsing + agentic web scraping). Designed an agent identity infrastructure (WayID) to secure human-to-agent interactions.',
     }] },
