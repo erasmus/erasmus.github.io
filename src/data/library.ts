@@ -13,7 +13,7 @@ export type LibraryArt =
   | 'orbit'
   | 'sea-power'
   | 'sunrise'
-  | 'tiling';
+  | 'omarchy';
 
 export interface Bookmark {
   title: string;
@@ -91,7 +91,7 @@ export const LIBRARY: Shelf[] = [
         by: 'DHH',
         url: 'https://omarchy.org/',
         note: 'The most fun Linux will ever be. Agentic-first OS.',
-        art: 'tiling',
+        art: 'omarchy',
       },
     ],
   },

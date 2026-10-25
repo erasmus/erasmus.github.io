@@ -37,6 +37,10 @@ const wave = Array.from({ length: 81 }, (_, i) => {
 
 // The agency grid: a field of dots the arrow cuts straight through.
 const grid = Array.from({ length: 6 * 10 }, (_, i) => ({ x: 52 + (i % 10) * 24, y: 46 + Math.floor(i / 10) * 22 }));
+
+// The Omarchy wordmark, traced from its pixel grid (src/assets/icons) into
+// one outline path: seven letters plus the counters of O, A and R.
+const OMARCHY = 'M224 71.2 L224 84.7 L220.5 84.7 L220.5 88.1 L217 88.1 L217 91.5 L213.6 91.5 L213.6 78 L203.2 78 L203.2 118.6 L213.6 118.6 L213.6 105.1 L217 105.1 L217 108.5 L220.5 108.5 L220.5 111.9 L224 111.9 L224 118.6 L220.5 118.6 L220.5 122 L217 122 L217 125.4 L192.8 125.4 L192.8 78 L196.3 78 L196.3 74.6 L199.8 74.6 L199.8 71.2 Z M230.9 78 L234.3 78 L234.3 74.6 L237.8 74.6 L237.8 71.2 L241.2 71.2 L241.2 94.9 L251.6 94.9 L251.6 71.2 L255.1 71.2 L255.1 74.6 L258.5 74.6 L258.5 78 L262 78 L262 94.9 L265.4 94.9 L265.4 98.3 L262 98.3 L262 118.6 L258.5 118.6 L258.5 122 L255.1 122 L255.1 125.4 L251.6 125.4 L251.6 101.7 L241.2 101.7 L241.2 125.4 L230.9 125.4 L230.9 101.7 L224 101.7 L224 98.3 L227.4 98.3 L227.4 94.9 L230.9 94.9 Z M89.1 67.8 L89.1 71.2 L103 71.2 L103 74.6 L106.4 74.6 L106.4 78 L109.9 78 L109.9 118.6 L106.4 118.6 L106.4 122 L103 122 L103 125.4 L99.5 125.4 L99.5 78 L89.1 78 L89.1 125.4 L78.8 125.4 L78.8 78 L68.4 78 L68.4 125.4 L64.9 125.4 L64.9 122 L61.5 122 L61.5 118.6 L58 118.6 L58 78 L61.5 78 L61.5 74.6 L64.9 74.6 L64.9 71.2 L78.8 71.2 L78.8 67.8 Z M165.2 78 L165.2 94.9 L175.6 94.9 L175.6 78 Z M51.1 118.6 L47.7 118.6 L47.7 122 L44.2 122 L44.2 125.4 L26.9 125.4 L26.9 122 L23.5 122 L23.5 118.6 L20 118.6 L20 78 L23.5 78 L23.5 74.6 L26.9 74.6 L26.9 71.2 L44.2 71.2 L44.2 74.6 L47.7 74.6 L47.7 78 L51.1 78 Z M279.3 94.9 L289.6 94.9 L289.6 71.2 L293.1 71.2 L293.1 74.6 L296.5 74.6 L296.5 78 L300 78 L300 118.6 L296.5 118.6 L296.5 122 L293.1 122 L293.1 125.4 L275.8 125.4 L275.8 122 L272.3 122 L272.3 118.6 L268.9 118.6 L268.9 108.5 L272.3 108.5 L272.3 105.1 L279.3 105.1 L279.3 118.6 L289.6 118.6 L289.6 101.7 L268.9 101.7 L268.9 78 L272.3 78 L272.3 74.6 L275.8 74.6 L275.8 71.2 L279.3 71.2 Z M165.2 105.1 L185.9 105.1 L185.9 125.4 L182.5 125.4 L182.5 128.8 L179 128.8 L179 132.2 L175.6 132.2 L175.6 111.9 L165.2 111.9 L165.2 132.2 L154.8 132.2 L154.8 111.9 L151.4 111.9 L151.4 105.1 L154.8 105.1 L154.8 101.7 L151.4 101.7 L151.4 94.9 L154.8 94.9 L154.8 78 L158.3 78 L158.3 74.6 L161.7 74.6 L161.7 71.2 L185.9 71.2 L185.9 94.9 L182.5 94.9 L182.5 98.3 L179 98.3 L179 101.7 L165.2 101.7 Z M30.4 78 L30.4 118.6 L40.7 118.6 L40.7 78 Z M137.5 78 L127.2 78 L127.2 94.9 L137.5 94.9 Z M137.5 101.7 L127.2 101.7 L127.2 125.4 L116.8 125.4 L116.8 101.7 L113.3 101.7 L113.3 94.9 L116.8 94.9 L116.8 78 L120.2 78 L120.2 74.6 L123.7 74.6 L123.7 71.2 L147.9 71.2 L147.9 118.6 L144.4 118.6 L144.4 122 L141 122 L141 125.4 L137.5 125.4 Z';
 ---
 <svg class={`art art-${art}`} viewBox="0 0 320 200" aria-hidden="true" focusable="false">
   {art === 'color' && (
@@ -206,28 +210,10 @@ const grid = Array.from({ length: 6 * 10 }, (_, i) => ({ x: 52 + (i % 10) * 24, 
       <rect x="262" y="86" width="12" height="12" fill="currentColor" transform="rotate(45 268 92)" />
     </g>
   )}
-  {art === 'tiling' && (
-    <g class="tiling">
-      <rect x="36" y="22" width="248" height="8" fill="currentColor" opacity="0.12" />
-      <g fill="currentColor" opacity="0.5"><circle cx="44" cy="26" r="1.8" /><circle cx="51" cy="26" r="1.8" /><circle cx="58" cy="26" r="1.8" /><rect x="262" y="24" width="16" height="4" /></g>
-      <g fill="var(--paper)" stroke="currentColor" stroke-width="1.5">
-        <rect x="36" y="36" width="120" height="142" />
-      </g>
-      <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-        <path d="M48 52 l6 4 l-6 4" fill="none" /><path d="M60 60 H104" />
-        <path d="M48 74 H128 M48 86 H112 M48 98 H136 M48 110 H92" opacity="0.4" />
-        <path d="M48 124 l6 4 l-6 4" fill="none" />
-      </g>
-      <rect class="caret" x="60" y="124" width="7" height="10" fill="currentColor" />
-      <g class="tile tile-top">
-        <rect x="164" y="36" width="120" height="67" fill="var(--paper)" stroke="currentColor" stroke-width="1.5" />
-        <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"><path d="M176 52 H220 M186 62 H256 M186 72 H240 M176 82 H206" /></g>
-      </g>
-      <g class="tile tile-bottom">
-        <rect x="164" y="111" width="120" height="67" fill="var(--paper)" stroke="currentColor" stroke-width="1.5" />
-        <path d="M176 164 L200 140 L216 152 L244 124 L272 146" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-        <path d="M176 164 L200 140 L216 152 L244 124 L272 146 V164 Z" fill="currentColor" opacity="0.12" />
-      </g>
+  {art === 'omarchy' && (
+    <g class="omarchy">
+      <path class="echo" d={OMARCHY} fill="currentColor" />
+      <path d={OMARCHY} fill="var(--paper)" fill-rule="evenodd" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter" />
     </g>
   )}
 
@@ -284,10 +270,8 @@ const grid = Array.from({ length: 6 * 10 }, (_, i) => ({ x: 52 + (i % 10) * 24, 
   :global(.book:hover) .waves, :global(.book:focus-visible) .waves { transform: translateX(-20px); }
   :global(.book:hover) .ship, :global(.book:focus-visible) .ship { transform: translate(-10px, 8px); }
 
-  :global(.book:hover) .tile-top, :global(.book:focus-visible) .tile-top { transform: translateY(75px); }
-  :global(.book:hover) .tile-bottom, :global(.book:focus-visible) .tile-bottom { transform: translateY(-75px); }
-  :global(.book:hover) .caret, :global(.book:focus-visible) .caret { animation: blink 1s steps(1) infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
+  .echo { opacity: 0; }
+  :global(.book:hover) .echo, :global(.book:focus-visible) .echo { opacity: 0.18; transform: translate(5px, 5px); }
 
   :global(.book:hover) .sun, :global(.book:focus-visible) .sun { transform: translateY(-14px); }
 
