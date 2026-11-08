@@ -24,7 +24,7 @@ export const CV: Cv = {
     { org: 'Lineage Labs', logo: 'lineage-labs-logo-dark.svg', positions: [{
       title: 'Founder', dates: 'Feb 2026 – present',
       note: 'Building trust rails for AI agents.',
-      summary: 'Designed, engineered and deployed WaySpace, an agentic knowledge architecture using LLM-based indexing and hybrid search (symbolic parsing + agentic web scraping). Designed an agent identity infrastructure (WayID) to secure human-to-agent interactions.',
+      summary: 'Designed, engineered and deployed WaySpace, a discovery engine for agentic tools using LLM-based indexing and hybrid search (symbolic parsing + agentic web scraping). Designed an agent identity infrastructure (WayID) to secure human-to-agent interactions.',
     }] },
     { org: 'Concordium', icon: 'Concordium Symbol_Black.svg', logo: 'Concordium_Logo_Black_full.svg', positions: [{
       title: 'Director of Product', dates: 'Dec 2023 – Feb 2026',
@@ -35,7 +35,7 @@ export const CV: Cv = {
         'Led iOS and Android app development: revamped the outdated crypto wallet suite (iOS, Android, browser) and launched Concordium ID, a standalone self-custodial identity app that lets users prove single facts about themselves (e.g. over 18) with zero-knowledge proofs while revealing nothing else.',
         'Led product development of an agentic identity system: AI certificates that give AI agents a verifiable identity and bind them to the Concordium user who operates them. Presented as "AI Certificates" at Nordic Blockchain Conference 2024 (https://www.youtube.com/watch?v=b7okSZgwNaY) and "Next-gen Identity: Verifiable Credentials & AI Agents" at Nordic Fintech Week 2024 (https://www.youtube.com/watch?v=cv0z43-CoPs).',
         'Investigated self-sovereign identity in depth, including verifiable credentials held in the wallet for credential proofs across many use cases, and explored organisational identity (LEI, vLEI, GLEIF) for KYC/KYB management.',
-        'Managed several protocol updates end to end, covering roadmap rollouts, community management, and communication to validators, node operators, and ecosystem partners.',
+        'Managed several protocol updates end to end, covering roadmap rollouts, community management, and alignment with validators, node operators, and ecosystem partners.',
         'Worked on governance decisions for the protocol, arranging internal and external workshops with stakeholders.',
         'Drove developer relations and ecosystem growth through keynote talks, technical documentation, and workshops.',
       ],
